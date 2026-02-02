@@ -23,6 +23,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Instalar dependencias y generar CSS (Tailwind)
+        run: |
+          npm ci
+          npm run build:css
+
       - name: Inyectar configuración Firebase
         env:
           FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}

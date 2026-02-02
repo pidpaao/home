@@ -1,0 +1,10 @@
+{
+  "name": "pidpaao-home",
+  "private": true,
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  },
+  "scripts": {
+    "build:css": "tailwindcss -i src/input.css -o css/tailwind.css --minify"
+  }
+}
