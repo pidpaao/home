@@ -962,7 +962,12 @@
                 return;
             }
             if (!firebaseAuth) {
-                alert('Firebase no está disponible. Revisá la consola del navegador (F12) por errores o asegurate de tener conexión.');
+                var apiKey = (typeof FIREBASE_CONFIG !== 'undefined' && FIREBASE_CONFIG.apiKey) ? String(FIREBASE_CONFIG.apiKey) : '';
+                var configFalta = !apiKey || apiKey.indexOf('__') === 0;
+                var msg = configFalta
+                    ? 'La configuración de Firebase no está en el sitio.\n\n1) En el repo: Settings → Pages → Source debe ser "GitHub Actions".\n2) En Actions, el workflow "Deploy to GitHub Pages" debe haber corrido bien (verde).\n3) Los secretos FIREBASE_* tienen que estar en el entorno que usa el workflow (ej. Production).\n4) Después de desplegar, recargá con Ctrl+Shift+R para evitar caché.'
+                    : 'Firebase no está disponible. Revisá la consola del navegador (F12) por errores o asegurate de tener conexión.';
+                alert(msg);
                 return;
             }
             const provider = new firebase.auth.GoogleAuthProvider();
