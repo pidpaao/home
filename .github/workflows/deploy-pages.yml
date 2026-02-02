@@ -1,6 +1,3 @@
-# Despliega el sitio a GitHub Pages inyectando la config de Firebase desde secretos.
-
-
 name: Deploy to GitHub Pages
 
 on:
