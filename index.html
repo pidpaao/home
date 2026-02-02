@@ -111,7 +111,7 @@
                         <a href="#encuentro2" class="block text-white hover:text-crowdarGreen px-4 py-3 rounded-lg hover:bg-slate-800 transition text-lg font-medium menu-link">Encuentro 2</a>
                         <a href="#cear" class="block text-white hover:text-crowdarGreen px-4 py-3 rounded-lg hover:bg-slate-800 transition text-lg font-medium menu-link">Simulador C-E-A-R</a>
                         <div id="mobileAuthContainer" class="mt-4 pt-4 border-t border-slate-700">
-                            <button id="btnGoogleLoginMobile" type="button" class="hidden w-full items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white px-4 py-3 rounded-lg text-sm font-medium transition border border-slate-600">
+                            <button id="btnGoogleLoginMobile" type="button" class="w-full flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white px-4 py-3 rounded-lg text-sm font-medium transition border border-slate-600">
                                 <i class="fab fa-google text-crowdarGreen"></i> Iniciar sesión con Google
                             </button>
                             <div id="userBadgeMobile" class="hidden text-sm text-gray-300"><span id="userEmailMobile"></span> · <button id="btnLogoutMobile" type="button" class="text-amber-400 hover:text-white">Cerrar sesión</button></div>
@@ -992,6 +992,10 @@
 
         document.addEventListener('DOMContentLoaded', function() {
             firebaseInit();
+            // Si Firebase no se inicializó (placeholders), mostrar estado "no logueado": botones de login y banner
+            if (!firebaseAuth) {
+                onAuthStateChanged(null);
+            }
             document.getElementById('btnGoogleLogin')?.addEventListener('click', loginGoogle);
             document.getElementById('btnGoogleLoginMobile')?.addEventListener('click', loginGoogle);
             document.getElementById('btnLogout')?.addEventListener('click', logout);
