@@ -16,7 +16,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+    <!-- Firebase: Auth + Firestore para login Google y persistencia segura de checkpoints -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -62,6 +65,17 @@
                     </div>
                 </div>
                 <div class="flex items-center gap-4">
+                    <!-- Login Google: persistencia segura de datos (PIDPAAO + Bot Coaching) -->
+                    <div id="authContainer" class="flex items-center gap-2">
+                        <button id="btnGoogleLogin" type="button" class="flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-3 py-2 rounded-lg text-sm font-medium transition border border-slate-600">
+                            <i class="fab fa-google text-crowdarGreen"></i>
+                            <span class="hidden sm:inline">Iniciar sesión</span>
+                        </button>
+                        <div id="userBadge" class="hidden items-center gap-2 text-sm">
+                            <span id="userEmail" class="text-gray-300 truncate max-w-[140px]"></span>
+                            <button id="btnLogout" type="button" class="text-amber-400 hover:text-white transition" title="Cerrar sesión">Cerrar sesión</button>
+                        </div>
+                    </div>
                     <a href="https://wa.me/5492615130196" target="_blank" rel="noopener noreferrer" class="hidden md:block bg-crowdarGreen text-darkBg px-4 py-2 rounded-full font-bold hover:bg-white transition shadow-lg shadow-crowdarGreen/20">
                         Agendar Sesión
                     </a>
@@ -96,6 +110,12 @@
                         <a href="#encuentro1" class="block text-white hover:text-crowdarGreen px-4 py-3 rounded-lg hover:bg-slate-800 transition text-lg font-medium menu-link">Encuentro 1</a>
                         <a href="#encuentro2" class="block text-white hover:text-crowdarGreen px-4 py-3 rounded-lg hover:bg-slate-800 transition text-lg font-medium menu-link">Encuentro 2</a>
                         <a href="#cear" class="block text-white hover:text-crowdarGreen px-4 py-3 rounded-lg hover:bg-slate-800 transition text-lg font-medium menu-link">Simulador C-E-A-R</a>
+                        <div id="mobileAuthContainer" class="mt-4 pt-4 border-t border-slate-700">
+                            <button id="btnGoogleLoginMobile" type="button" class="hidden w-full items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white px-4 py-3 rounded-lg text-sm font-medium transition border border-slate-600">
+                                <i class="fab fa-google text-crowdarGreen"></i> Iniciar sesión con Google
+                            </button>
+                            <div id="userBadgeMobile" class="hidden text-sm text-gray-300"><span id="userEmailMobile"></span> · <button id="btnLogoutMobile" type="button" class="text-amber-400 hover:text-white">Cerrar sesión</button></div>
+                        </div>
                         <a href="https://wa.me/5492615130196" target="_blank" rel="noopener noreferrer" class="block bg-crowdarGreen text-darkBg px-4 py-3 rounded-lg font-bold hover:bg-white transition text-center mt-6 menu-link">
                             Agendar Sesión
                         </a>
@@ -131,6 +151,12 @@
             </div>
         </div>
     </section>
+
+    <!-- Aviso: inicia sesión para guardar tu progreso (persistencia y bot coaching) -->
+    <div id="bannerLogin" class="hidden fixed bottom-4 left-4 right-4 md:left-auto md:right-4 md:max-w-sm z-40 p-4 glass-effect rounded-xl border border-crowdarGreen/30 shadow-lg">
+        <p class="text-sm text-gray-200 mb-2"><i class="fas fa-cloud-upload-alt text-crowdarGreen mr-2"></i>Iniciá sesión con Google para guardar tus respuestas y que el bot de coaching pueda acompañarte con tu historial.</p>
+        <button type="button" id="bannerLoginBtn" class="w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition text-sm">Iniciar sesión con Google</button>
+    </div>
 
     <!-- ========== ENCUENTRO 1: Fundamentos Ontológicos, Emocionales y Sistémicos del Aprendizaje ========== -->
     <section id="encuentro1" class="py-20 bg-slate-800 border-t border-slate-700">
@@ -880,6 +906,106 @@
     </footer>
 
     <script>
+        const FIREBASE_CONFIG = {
+            apiKey: "__FIREBASE_API_KEY__",
+            authDomain: "__FIREBASE_AUTH_DOMAIN__",
+            projectId: "__FIREBASE_PROJECT_ID__",
+            storageBucket: "__FIREBASE_STORAGE_BUCKET__",
+            messagingSenderId: "__FIREBASE_MESSAGING_SENDER_ID__",
+            appId: "__FIREBASE_APP_ID__",
+            measurementId: "__FIREBASE_MEASUREMENT_ID__"
+        };
+        let firebaseApp = null;
+        let firebaseAuth = null;
+        let firestoreDb = null;
+        window.currentUser = null;
+
+        function firebaseInit() {
+            if (!window.firebase || !FIREBASE_CONFIG.apiKey || String(FIREBASE_CONFIG.apiKey).indexOf('__') === 0) return;
+            try {
+                firebaseApp = firebase.initializeApp(FIREBASE_CONFIG);
+                firebaseAuth = firebase.auth();
+                firestoreDb = firebase.firestore();
+                firebaseAuth.onAuthStateChanged(onAuthStateChanged);
+            } catch (e) { console.warn("Firebase no configurado o error:", e); }
+        }
+
+        function onAuthStateChanged(user) {
+            window.currentUser = user;
+            const btnLogin = document.getElementById('btnGoogleLogin');
+            const btnLoginMobile = document.getElementById('btnGoogleLoginMobile');
+            const userBadge = document.getElementById('userBadge');
+            const userBadgeMobile = document.getElementById('userBadgeMobile');
+            const userEmail = document.getElementById('userEmail');
+            const userEmailMobile = document.getElementById('userEmailMobile');
+            const banner = document.getElementById('bannerLogin');
+            if (user) {
+                if (btnLogin) { btnLogin.classList.add('hidden'); }
+                if (btnLoginMobile) { btnLoginMobile.classList.add('hidden'); }
+                if (userBadge) { userBadge.classList.remove('hidden'); userBadge.classList.add('flex'); }
+                if (userBadgeMobile) { userBadgeMobile.classList.remove('hidden'); }
+                if (userEmail) userEmail.textContent = user.email || '';
+                if (userEmailMobile) userEmailMobile.textContent = user.email || '';
+                if (banner) banner.classList.add('hidden');
+            } else {
+                if (btnLogin) { btnLogin.classList.remove('hidden'); btnLogin.classList.add('flex'); }
+                if (btnLoginMobile) { btnLoginMobile.classList.remove('hidden'); btnLoginMobile.classList.add('flex'); }
+                if (userBadge) { userBadge.classList.add('hidden'); userBadge.classList.remove('flex'); }
+                if (userBadgeMobile) { userBadgeMobile.classList.add('hidden'); }
+                if (banner) banner.classList.remove('hidden');
+            }
+        }
+
+        function loginGoogle() {
+            if (window.location.protocol === 'file:') {
+                alert('El inicio de sesión con Google no funciona al abrir el archivo directamente (file://).\n\n1) Primero: en la terminal, entrá a la carpeta "home" y ejecutá:\n   npx serve .\n2) Después: en el navegador abrí http://localhost:3000\n\nO usá la extensión "Live Server" en Cursor/VS Code y abrí index.html con "Open with Live Server".');
+                return;
+            }
+            if (!firebaseAuth) {
+                alert('Firebase no está disponible. Revisá la consola del navegador (F12) por errores o asegurate de tener conexión.');
+                return;
+            }
+            const provider = new firebase.auth.GoogleAuthProvider();
+            firebaseAuth.signInWithPopup(provider).catch(function(err) {
+                console.warn("Error login:", err);
+                var msg = err && err.message ? err.message : String(err);
+                if (msg.indexOf('popup') !== -1 || msg.indexOf('cookies') !== -1) msg = 'El popup fue bloqueado o las cookies están deshabilitadas. Probá permitir ventanas emergentes para este sitio.';
+                alert('Error al iniciar sesión: ' + msg);
+            });
+        }
+
+        function logout() {
+            if (firebaseAuth) firebaseAuth.signOut();
+        }
+
+        function persistCheckpoint(uid, email, checkpointNum, value, titulo, texto) {
+            if (!firestoreDb || !uid) return;
+            const ref = firestoreDb.collection('users').doc(uid).collection('checkpoints').doc(String(checkpointNum));
+            ref.set({
+                value: value,
+                titulo: titulo || '',
+                texto: texto || '',
+                email: email || '',
+                updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+            }).then(function() { /* opcional: notificar al bot vía webhook */ }).catch(function(err) { console.warn("Error guardando checkpoint:", err); });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            firebaseInit();
+            document.getElementById('btnGoogleLogin')?.addEventListener('click', loginGoogle);
+            document.getElementById('btnGoogleLoginMobile')?.addEventListener('click', loginGoogle);
+            document.getElementById('btnLogout')?.addEventListener('click', logout);
+            document.getElementById('btnLogoutMobile')?.addEventListener('click', logout);
+            document.getElementById('bannerLoginBtn')?.addEventListener('click', loginGoogle);
+            if (window.location.protocol === 'file:') {
+                var banner = document.getElementById('bannerLogin');
+                if (banner) {
+                    var p = banner.querySelector('p');
+                    if (p) p.innerHTML = '<i class="fas fa-exclamation-triangle text-amber-400 mr-2"></i><strong>Para que el inicio de sesión funcione</strong>: 1) En la terminal, dentro de la carpeta <code>home</code>, ejecutá <code>npx serve .</code> 2) Después abrí <a href="http://localhost:3000" target="_blank" class="text-crowdarGreen underline">http://localhost:3000</a> en el navegador.';
+                }
+            }
+        });
+
         // Reflexiones por checkpoint y opción (Encuentro 1)
         const CHECKPOINT_REFLEXIONES = {
             1: {
@@ -999,6 +1125,10 @@
             resultDiv.classList.remove('hidden');
             resultDiv.classList.add('animate-pulse');
             setTimeout(function() { resultDiv.classList.remove('animate-pulse'); }, 500);
+            // Persistencia segura: si el usuario inició sesión con Google, guardar en Firestore para dataset del bot
+            if (window.currentUser && typeof persistCheckpoint === 'function') {
+                persistCheckpoint(window.currentUser.uid, window.currentUser.email || '', num, value, r.titulo, r.texto);
+            }
         }
 
         function runSimulation() {
