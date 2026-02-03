@@ -72,6 +72,24 @@
         @media (min-width: 1024px) {
             .encuentro1-layout { max-width: 56rem; gap: 1.5rem; }
         }
+        /* Timeline global   – reloj de arena por sección (lineal/caricatura/hyperrealista) */
+        #global-timeline { position: fixed; left: 0; top: 0; bottom: 0; width: 56px; z-index: 30; display: none; flex-direction: column; align-items: center; padding-top: 5rem; padding-bottom: 2rem; pointer-events: none; }
+        #global-timeline .timeline-inner { pointer-events: auto; display: flex; flex-direction: column; align-items: center; flex: 1; }
+        .timeline-line { position: absolute; left: 50%; top: 5rem; bottom: 2rem; width: 2px; background: linear-gradient(to bottom, transparent, rgba(34, 197, 94, 0.3) 10%, rgba(34, 197, 94, 0.5) 50%, rgba(34, 197, 94, 0.3) 90%, transparent); transform: translateX(-50%); border-radius: 1px; }
+        .timeline-nodes { position: relative; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; padding: 0.5rem 0; }
+        .timeline-node { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: rgba(30, 41, 59, 0.9); border: 2px solid rgba(71, 85, 105, 0.6); color: #94a3b8; transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s, color 0.25s; text-decoration: none; }
+        .timeline-node:hover { border-color: rgba(34, 197, 94, 0.6); color: #cbd5e1; }
+        .timeline-node.active { border-color: #22c55e; box-shadow: 0 0 16px rgba(34, 197, 94, 0.5); color: #22c55e; }
+        .timeline-node .reloj { width: 20px; height: 20px; }
+        .timeline-node .reloj--caricatura { width: 22px; height: 22px; }
+        .timeline-node .reloj--hyperrealista { width: 100%; height: 100%; border-radius: 50%; background: radial-gradient(ellipse 60% 40% at 50% 30%, rgba(34, 197, 94, 0.5), transparent 70%), radial-gradient(ellipse 80% 50% at 50% 75%, rgba(34, 197, 94, 0.35), transparent 60%); box-shadow: inset 0 0 12px rgba(34, 197, 94, 0.2); }
+        #global-timeline[data-theme="lineal"] .reloj--caricatura, #global-timeline[data-theme="lineal"] .reloj--hyperrealista { display: none; }
+        #global-timeline[data-theme="caricatura"] .reloj--lineal, #global-timeline[data-theme="caricatura"] .reloj--hyperrealista { display: none; }
+        #global-timeline[data-theme="hyperrealista"] .reloj--lineal, #global-timeline[data-theme="hyperrealista"] .reloj--caricatura { display: none; }
+        .timeline-theme-switcher { margin-top: auto; padding-top: 1rem; display: flex; flex-direction: column; gap: 0.25rem; }
+        .timeline-theme-switcher button { width: 32px; height: 28px; font-size: 0.6rem; color: #94a3b8; background: rgba(30, 41, 59, 0.9); border: 1px solid rgba(71, 85, 105, 0.5); border-radius: 4px; cursor: pointer; transition: color 0.2s, border-color 0.2s; }
+        .timeline-theme-switcher button:hover { color: #22c55e; border-color: rgba(34, 197, 94, 0.5); }
+        @media (min-width: 1024px) { #global-timeline { display: flex; } }
         .footer-block { opacity: 0; transform: translateY(20px); }
     </style>
 </head>
@@ -153,7 +171,27 @@
         </div>
     </div>
 
-    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+    <!-- Timeline global – reloj de arena por sección (lineal / caricatura / hyperrealista) -->
+    <aside id="global-timeline" data-theme="lineal" aria-label="Progreso por encuentros">
+        <div class="timeline-inner">
+            <div class="timeline-line" aria-hidden="true"></div>
+            <nav class="timeline-nodes">
+                <a href="#" class="timeline-node" data-section="inicio" title="Inicio"><span class="reloj reloj--lineal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 4v16M6 4l6 8 6-8M6 20l6-8 6 8"/></svg></span><span class="reloj reloj--caricatura" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M7 3l5 9 5-9M7 21l5-9 5 9"/></svg></span><span class="reloj reloj--hyperrealista"></span></a>
+                <a href="#encuentro1" class="timeline-node" data-section="encuentro1" title="Encuentro 1"><span class="reloj reloj--lineal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 4v16M6 4l6 8 6-8M6 20l6-8 6 8"/></svg></span><span class="reloj reloj--caricatura"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M7 3l5 9 5-9M7 21l5-9 5 9"/></svg></span><span class="reloj reloj--hyperrealista"></span></a>
+                <a href="#encuentro2" class="timeline-node" data-section="encuentro2" title="Encuentro 2"><span class="reloj reloj--lineal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 4v16M6 4l6 8 6-8M6 20l6-8 6 8"/></svg></span><span class="reloj reloj--caricatura"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M7 3l5 9 5-9M7 21l5-9 5 9"/></svg></span><span class="reloj reloj--hyperrealista"></span></a>
+                <a href="#programa" class="timeline-node" data-section="programa" title="Objetivos"><span class="reloj reloj--lineal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 4v16M6 4l6 8 6-8M6 20l6-8 6 8"/></svg></span><span class="reloj reloj--caricatura"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M7 3l5 9 5-9M7 21l5-9 5 9"/></svg></span><span class="reloj reloj--hyperrealista"></span></a>
+                <a href="#cear" class="timeline-node" data-section="cear" title="Simulador C-E-A-R"><span class="reloj reloj--lineal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 4v16M6 4l6 8 6-8M6 20l6-8 6 8"/></svg></span><span class="reloj reloj--caricatura"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M7 3l5 9 5-9M7 21l5-9 5 9"/></svg></span><span class="reloj reloj--hyperrealista"></span></a>
+                <a href="#temario" class="timeline-node" data-section="temario" title="Temario"><span class="reloj reloj--lineal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 4v16M6 4l6 8 6-8M6 20l6-8 6 8"/></svg></span><span class="reloj reloj--caricatura"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M7 3l5 9 5-9M7 21l5-9 5 9"/></svg></span><span class="reloj reloj--hyperrealista"></span></a>
+            </nav>
+            <div class="timeline-theme-switcher">
+                <button type="button" data-theme="lineal" title="Estilo lineal">L</button>
+                <button type="button" data-theme="caricatura" title="Estilo caricatura">C</button>
+                <button type="button" data-theme="hyperrealista" title="Estilo hyperrealista">H</button>
+            </div>
+        </div>
+    </aside>
+
+    <section id="inicio" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         <!-- Imagen de fondo a ancho completo -->
         <div class="absolute inset-0 w-full h-full">
             <img src="img/01.png" alt="Transformación" class="w-full h-full object-cover opacity-30" loading="lazy">
@@ -1123,6 +1161,40 @@
                     });
                     document.querySelectorAll('.checkpoint-submit-btn').forEach(function(btn) {
                         btn.addEventListener('click', function() { triggerBounceCheckpoint(btn, 'checkpoint-submit-btn--bounce'); });
+                    });
+                })();
+
+                // Timeline global   – scroll spy y selector de estilo del reloj (lineal/caricatura/hyperrealista)
+                (function() {
+                    var timeline = document.getElementById('global-timeline');
+                    if (!timeline) return;
+                    var nodes = timeline.querySelectorAll('.timeline-node');
+                    var sections = ['inicio', 'encuentro1', 'encuentro2', 'programa', 'cear', 'temario'];
+                    var sectionEls = sections.map(function(id) { return id === 'inicio' ? document.getElementById('inicio') : document.getElementById(id); }).filter(Boolean);
+                    var activeSection = 'inicio';
+
+                    var spyObserver = new IntersectionObserver(function(entries) {
+                        entries.forEach(function(entry) {
+                            if (!entry.isIntersecting) return;
+                            var id = entry.target.id || 'inicio';
+                            if (sections.indexOf(id) === -1) return;
+                            activeSection = id;
+                            nodes.forEach(function(n) {
+                                n.classList.toggle('active', n.getAttribute('data-section') === id);
+                            });
+                        });
+                    }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
+
+                    sectionEls.forEach(function(el) { if (el) spyObserver.observe(el); });
+                    nodes.forEach(function(n) {
+                        n.classList.toggle('active', n.getAttribute('data-section') === activeSection);
+                    });
+
+                    timeline.querySelectorAll('.timeline-theme-switcher button').forEach(function(btn) {
+                        btn.addEventListener('click', function() {
+                            var theme = btn.getAttribute('data-theme');
+                            if (theme) timeline.setAttribute('data-theme', theme);
+                        });
                     });
                 })();
 
