@@ -28,6 +28,50 @@
         .cear-box { opacity: 0; transform: translateY(36px); }
         .encuentro1-detail { opacity: 0; transform: translateY(20px); }
         .temario-item { opacity: 0; transform: translateY(24px); }
+        /* Timeline Encuentro 1 – células centradas en altura de la caja; números + caja centrados en ancho */
+        .encuentro1-layout { flex-wrap: nowrap; width: 100%; max-width: 56rem; margin-left: auto; margin-right: auto; }
+        .encuentro1-structure-wrap { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 0.75rem; width: auto; justify-content: center; }
+        .encuentro1-timeline-page { display: none; flex-direction: column; align-items: center; gap: 0.25rem; }
+        .encuentro1-timeline-page.is-visible { display: flex; }
+        .encuentro1-timeline-row { display: flex; justify-content: center; align-items: center; gap: 0.25rem; }
+        .encuentro1-node { width: 32px; height: 32px; border-radius: 50%; border: none; background: #334155; color: #94a3b8; font-size: 0.7rem; font-weight: 600; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s, color 0.2s, box-shadow 0.2s; flex-shrink: 0; }
+        .encuentro1-node:hover { background: #475569; color: #e2e8f0; }
+        .encuentro1-node.active { background: #22c55e; color: #0f172a; box-shadow: 0 0 12px rgba(34, 197, 94, 0.5); }
+        .encuentro1-timeline-nav { display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+        .encuentro1-timeline-nav button { width: 36px; height: 36px; border-radius: 50%; border: 1px solid #475569; background: #334155; color: #94a3b8; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s, color 0.2s; }
+        .encuentro1-timeline-nav button:hover:not(:disabled) { background: #475569; color: #22c55e; }
+        .encuentro1-timeline-nav button:disabled { opacity: 0.4; cursor: not-allowed; }
+        @keyframes encuentro1-bounce-y {
+            0% { transform: translateY(0); }
+            25% { transform: translateY(-10px); }
+            45% { transform: translateY(4px); }
+            65% { transform: translateY(-2px); }
+            82% { transform: translateY(1px); }
+            100% { transform: translateY(0); }
+        }
+        @keyframes encuentro1-bounce-scale {
+            0% { transform: scale(1); }
+            28% { transform: scale(1.18); }
+            48% { transform: scale(0.92); }
+            68% { transform: scale(1.06); }
+            100% { transform: scale(1); }
+        }
+        .encuentro1-node.encuentro1-node--bounce { animation: encuentro1-bounce-y 0.6s ease-out forwards; }
+        .encuentro1-timeline-nav button.encuentro1-arrow--bounce { animation: encuentro1-bounce-scale 0.5s ease-out forwards; }
+        .checkpoint-option.checkpoint-option--bounce { animation: encuentro1-bounce-scale 0.5s ease-out forwards; }
+        .checkpoint-submit-btn.checkpoint-submit-btn--bounce { animation: encuentro1-bounce-scale 0.5s ease-out forwards; }
+        .encuentro1-content { flex: 1 1 0%; min-width: 0; display: flex; flex-direction: column; }
+        .encuentro1-content-box { background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(71, 85, 105, 0.5); border-radius: 0.75rem; padding: 1.25rem; min-height: 200px; flex: 1; }
+        .encuentro1-step { display: none; }
+        .encuentro1-step.is-visible { display: block; }
+        @media (min-width: 768px) {
+            .encuentro1-layout { flex-direction: row; align-items: center; gap: 1.25rem; }
+            .encuentro1-structure-wrap { width: 160px; max-width: 160px; margin: 0; align-self: stretch; justify-content: center; }
+            .encuentro1-content { flex: 1 1 auto; }
+        }
+        @media (min-width: 1024px) {
+            .encuentro1-layout { max-width: 56rem; gap: 1.5rem; }
+        }
         .footer-block { opacity: 0; transform: translateY(20px); }
     </style>
 </head>
@@ -144,7 +188,7 @@
 
     <!-- ========== ENCUENTRO 1: Fundamentos Ontológicos, Emocionales y Sistémicos del Aprendizaje ========== -->
     <section id="encuentro1" class="py-20 bg-slate-800 border-t border-slate-700">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-14 encuentro1-header">
                 <span class="bg-crowdarGreen/20 text-crowdarGreen text-xs font-bold px-3 py-1 rounded-full">PRIMER ENCUENTRO</span>
                 <h2 class="text-3xl font-bold text-white mt-4">Encuentro 1 – Fundamentos Ontológicos, Emocionales y Sistémicos del Aprendizaje</h2>
@@ -153,431 +197,389 @@
                 </p>
             </div>
 
-            <div class="space-y-4">
-                <!-- 1. Presentación e introducción -->
-                <details class="encuentro1-detail group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
-                    <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-white list-none">
-                        <span>1. Presentación e introducción</span>
-                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-crowdarGreen"></i></span>
-                    </summary>
-                    <div class="px-5 pb-5 pt-0">
-                        <p class="text-gray-400 text-sm mb-4">Misión: Transmitir y potenciar recursos para transformar la vida y la realidad mediante experiencias integrativas. Visión: Ser reconocidos por el impacto positivo en la calidad de vida. Objetivos: Prevenir conflictos, aplicar autoconocimiento e inteligencia emocional, desarrollar adaptación, claridad de metas y valores.</p>
-                        <div class="glass-effect rounded-xl p-5 border border-crowdarGreen/30">
-                            <p class="text-crowdarGreen font-semibold text-sm mb-3 flex items-center gap-2"><i class="fas fa-check-circle"></i> Checkpoint – Pregunta de medición</p>
-                            <p class="text-gray-300 text-sm mb-3">¿Qué tipo de mejora personal busco principalmente en este proceso?</p>
-                            <div class="space-y-2 mb-4">
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_1" value="a" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">a) Mejorar mi organización, foco y forma de trabajar</span></label>
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_1" value="b" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">b) Aprender a manejar mejor la presión y el estrés</span></label>
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_1" value="c" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">c) Desarrollar mayor claridad y criterio para tomar decisiones</span></label>
+            <div class="encuentro1-layout flex flex-col md:flex-row gap-8 md:gap-6 items-start md:items-stretch">
+                <!-- Estructura (2-3-4-3) como imagen + flechas; contenido siempre a la derecha -->
+                <div class="encuentro1-structure-wrap" id="encuentro1StructureWrap">
+                    <nav class="encuentro1-timeline-pages" aria-label="Pasos del Encuentro 1" id="encuentro1Solar">
+                        <!-- Página 1: estructura exacta 2-3-4-3 (12 nodos) -->
+                        <div class="encuentro1-timeline-page is-visible" data-page="0" id="encuentro1Page0">
+                            <div class="encuentro1-timeline-row">
+                                <button type="button" class="encuentro1-node active" data-step="1" title="Presentación e introducción">1</button>
+                                <button type="button" class="encuentro1-node" data-step="2" title="Apertura del proceso">2</button>
                             </div>
-                            <button type="button" onclick="responderCheckpoint(1)" class="w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
-                            <div id="checkpoint_result_1" class="hidden mt-4 p-4 rounded-xl border border-crowdarGreen/40 bg-slate-900/80 space-y-2"></div>
+                            <div class="encuentro1-timeline-row">
+                                <button type="button" class="encuentro1-node" data-step="3" title="Sentido del Encuentro 1">3</button>
+                                <button type="button" class="encuentro1-node" data-step="4" title="Personas como observadores">4</button>
+                                <button type="button" class="encuentro1-node" data-step="5" title="Creencias">5</button>
+                            </div>
+                            <div class="encuentro1-timeline-row">
+                                <button type="button" class="encuentro1-node" data-step="6" title="Creencias y biología">6</button>
+                                <button type="button" class="encuentro1-node" data-step="7" title="Automatismos">7</button>
+                                <button type="button" class="encuentro1-node" data-step="8" title="Aprender a aprender">8</button>
+                                <button type="button" class="encuentro1-node" data-step="9" title="Emoción y rendimiento">9</button>
+                            </div>
+                            <div class="encuentro1-timeline-row">
+                                <button type="button" class="encuentro1-node" data-step="10" title="Estrés crónico">10</button>
+                                <button type="button" class="encuentro1-node" data-step="11" title="Vínculos seguros">11</button>
+                                <button type="button" class="encuentro1-node" data-step="12" title="Coaching">12</button>
+                            </div>
+                        </div>
+                        <!-- Página 2: restantes (2-3-2 = 7 nodos) -->
+                        <div class="encuentro1-timeline-page" data-page="1" id="encuentro1Page1">
+                            <div class="encuentro1-timeline-row">
+                                <button type="button" class="encuentro1-node" data-step="13" title="Protagonismo">13</button>
+                                <button type="button" class="encuentro1-node" data-step="14" title="Equipos">14</button>
+                            </div>
+                            <div class="encuentro1-timeline-row">
+                                <button type="button" class="encuentro1-node" data-step="15" title="Confianza">15</button>
+                                <button type="button" class="encuentro1-node" data-step="16" title="Mirada sistémica">16</button>
+                                <button type="button" class="encuentro1-node" data-step="17" title="Lenguaje">17</button>
+                            </div>
+                            <div class="encuentro1-timeline-row">
+                                <button type="button" class="encuentro1-node" data-step="18" title="Conversaciones conscientes">18</button>
+                                <button type="button" class="encuentro1-node" data-step="19" title="Cierre del encuentro">19</button>
+                            </div>
+                        </div>
+                    </nav>
+                    <div class="encuentro1-timeline-nav">
+                        <button type="button" id="encuentro1Prev" aria-label="Anterior" disabled><i class="fas fa-chevron-left"></i></button>
+                        <button type="button" id="encuentro1Next" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div class="encuentro1-content">
+                    <div class="encuentro1-content-box">
+                    <div class="encuentro1-step is-visible" data-step="1">
+                        <div class="px-5 pb-5 pt-0">
+                            <h3 class="text-lg font-semibold text-white mb-3">1. Presentación e introducción</h3>
+                            <p class="text-gray-400 text-sm mb-4">Misión: Transmitir y potenciar recursos para transformar la vida y la realidad mediante experiencias integrativas. Visión: Ser reconocidos por el impacto positivo en la calidad de vida. Objetivos: Prevenir conflictos, aplicar autoconocimiento e inteligencia emocional, desarrollar adaptación, claridad de metas y valores.</p>
+                            <div class="glass-effect rounded-xl p-5 border border-crowdarGreen/30">
+                                <p class="text-crowdarGreen font-semibold text-sm mb-3 flex items-center gap-2"><i class="fas fa-check-circle"></i> Checkpoint – Pregunta de medición</p>
+                                <p class="text-gray-300 text-sm mb-3">¿Qué tipo de mejora personal busco principalmente en este proceso?</p>
+                                <div class="space-y-2 mb-4">
+                                    <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_1" value="a" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">a) Mejorar mi organización, foco y forma de trabajar</span></label>
+                                    <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_1" value="b" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">b) Aprender a manejar mejor la presión y el estrés</span></label>
+                                    <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_1" value="c" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">c) Desarrollar mayor claridad y criterio para tomar decisiones</span></label>
+                                </div>
+                                <button type="button" onclick="responderCheckpoint(1)" class="checkpoint-submit-btn w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
+                                <div id="checkpoint_result_1" class="hidden mt-4 p-4 rounded-xl border border-crowdarGreen/40 bg-slate-900/80 space-y-2"></div>
+                            </div>
                         </div>
                     </div>
-                </details>
-
-                <!-- 2. Apertura del proceso -->
-                <details class="encuentro1-detail group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
-                    <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-white list-none">
-                        <span>2. Apertura del proceso</span>
-                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-crowdarGreen"></i></span>
-                    </summary>
-                    <div class="px-5 pb-5 pt-0">
+                    <div class="encuentro1-step" data-step="2">
+                        <div class="px-5 pb-5 pt-0">
+                            <h3 class="text-lg font-semibold text-white mb-3">2. Apertura del proceso</h3>
                         <p class="text-gray-400 text-sm mb-2">El programa es un proceso, no una capacitación aislada. El desempeño sostenible requiere transformar cómo nos observamos a nosotros mismos, al contexto y a los demás.</p>
                         <p class="text-crowdarGreen text-sm font-medium mb-4">Dinámica: Contrato de aprendizaje consciente. Consigna: ¿Qué tipo de mejora personal busco principalmente? (trabajo individual 5 min). Anclaje: «Este proceso no funciona si solo vengo a escuchar».</p>
                         <div class="glass-effect rounded-xl p-5 border border-crowdarGreen/30">
                             <p class="text-crowdarGreen font-semibold text-sm mb-3 flex items-center gap-2"><i class="fas fa-check-circle"></i> Checkpoint</p>
                             <p class="text-gray-300 text-sm mb-3">Hoy, ¿dónde pongo mayor expectativa de mejora?</p>
                             <div class="space-y-2 mb-4">
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_2" value="a" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">a) En cambios del contexto (procesos, prioridades, decisiones externas)</span></label>
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_2" value="b" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">b) En ajustes tanto del contexto como de mi forma de trabajar</span></label>
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_2" value="c" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">c) Principalmente en cambios que puedo hacer yo</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_2" value="a" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">a) En cambios del contexto (procesos, prioridades, decisiones externas)</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_2" value="b" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">b) En ajustes tanto del contexto como de mi forma de trabajar</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_2" value="c" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">c) Principalmente en cambios que puedo hacer yo</span></label>
                             </div>
-                            <button type="button" onclick="responderCheckpoint(2)" class="w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
+                            <button type="button" onclick="responderCheckpoint(2)" class="checkpoint-submit-btn w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
                             <div id="checkpoint_result_2" class="hidden mt-4 p-4 rounded-xl border border-crowdarGreen/40 bg-slate-900/80 space-y-2"></div>
                         </div>
+                        </div>
                     </div>
-                </details>
-
-                <!-- 3. Sentido del Encuentro 1 -->
-                <details class="encuentro1-detail group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
-                    <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-white list-none">
-                        <span>3. Sentido del Encuentro 1</span>
-                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-crowdarGreen"></i></span>
-                    </summary>
-                    <div class="px-5 pb-5 pt-0">
-                        <p class="text-gray-400 text-sm">Fundamentos ontológicos, emocionales y sistémicos. El primer encuentro sienta las bases sobre las que se apoyará todo el recorrido posterior.</p>
-                        <p class="text-crowdarGreen text-sm font-medium mt-3">Dinámica: Expectativas vs. realidad. Objetivo: diferenciar expectativas implícitas de lo que realmente depende de cada participante.</p>
+                    <div class="encuentro1-step" data-step="3">
+                        <div class="px-5 pb-5 pt-0">
+                            <h3 class="text-lg font-semibold text-white mb-3">3. Sentido del Encuentro 1</h3>
+                            <p class="text-gray-400 text-sm">Fundamentos ontológicos, emocionales y sistémicos. El primer encuentro sienta las bases sobre las que se apoyará todo el recorrido posterior.</p>
+                            <p class="text-crowdarGreen text-sm font-medium mt-3">Dinámica: Expectativas vs. realidad. Objetivo: diferenciar expectativas implícitas de lo que realmente depende de cada participante.</p>
+                        </div>
                     </div>
-                </details>
-
-                <!-- 4. Personas como observadores -->
-                <details class="encuentro1-detail group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
-                    <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-white list-none">
-                        <span>4. Personas como observadores</span>
-                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-crowdarGreen"></i></span>
-                    </summary>
-                    <div class="px-5 pb-5 pt-0">
-                        <p class="text-gray-400 text-sm mb-4">No reaccionamos a los hechos, sino a nuestras interpretaciones.</p>
+                    <div class="encuentro1-step" data-step="4">
+                        <div class="px-5 pb-5 pt-0">
+                            <h3 class="text-lg font-semibold text-white mb-3">4. Personas como observadores</h3>
+                            <p class="text-gray-400 text-sm mb-4">No reaccionamos a los hechos, sino a nuestras interpretaciones.</p>
                         <p class="text-crowdarGreen text-sm font-medium mb-4">Dinámica: Un hecho, tres historias. Se presenta un hecho laboral neutro; en grupos pequeños: ¿Qué pasó? ¿Qué historia me cuento? ¿Qué emoción aparece? Cierre: comparar interpretaciones. Insight: No reacciono a lo que pasa, sino a lo que interpreto.</p>
                         <div class="glass-effect rounded-xl p-5 border border-crowdarGreen/30">
                             <p class="text-crowdarGreen font-semibold text-sm mb-3 flex items-center gap-2"><i class="fas fa-check-circle"></i> Checkpoint</p>
                             <p class="text-gray-300 text-sm mb-3">Ante un incidente técnico relevante, mi reacción más habitual es:</p>
                             <div class="space-y-2 mb-4">
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_4" value="a" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">a) Buscar rápidamente responsables o causas externas</span></label>
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_4" value="b" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">b) Enfocarme en resolver, pero con alto nivel de tensión</span></label>
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_4" value="c" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">c) Analizar el hecho con distancia y foco en aprendizaje</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_4" value="a" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">a) Buscar rápidamente responsables o causas externas</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_4" value="b" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">b) Enfocarme en resolver, pero con alto nivel de tensión</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_4" value="c" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">c) Analizar el hecho con distancia y foco en aprendizaje</span></label>
                             </div>
-                            <button type="button" onclick="responderCheckpoint(4)" class="w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
+                            <button type="button" onclick="responderCheckpoint(4)" class="checkpoint-submit-btn w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
                             <div id="checkpoint_result_4" class="hidden mt-4 p-4 rounded-xl border border-crowdarGreen/40 bg-slate-900/80 space-y-2"></div>
                         </div>
+                        </div>
                     </div>
-                </details>
-
-                <!-- 5. Creencias -->
-                <details class="encuentro1-detail group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
-                    <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-white list-none">
-                        <span>5. Creencias</span>
-                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-crowdarGreen"></i></span>
-                    </summary>
-                    <div class="px-5 pb-5 pt-0">
+                    <div class="encuentro1-step" data-step="5">
+                        <div class="px-5 pb-5 pt-0">
+                            <h3 class="text-lg font-semibold text-white mb-3">5. Creencias</h3>
                         <p class="text-gray-400 text-sm mb-4">Aprender implica desaprender patrones reactivos, desarrollar conciencia del propio funcionamiento interno y habilitar nuevas conexiones alineadas con objetivos y valores.</p>
                         <p class="text-crowdarGreen text-sm font-medium mb-4">Dinámica: La frase que me limita. Completar: «En mi trabajo, yo no puedo / no soy bueno/a para…». Identificar: ¿Desde cuándo creo esto? ¿Qué decisiones tomo desde ahí? Cierre: diferenciar creencia de hecho.</p>
                         <div class="glass-effect rounded-xl p-5 border border-crowdarGreen/30">
                             <p class="text-crowdarGreen font-semibold text-sm mb-3 flex items-center gap-2"><i class="fas fa-check-circle"></i> Checkpoint</p>
                             <p class="text-gray-300 text-sm mb-3">Cuando enfrento una tarea desafiante, suelo pensar que:</p>
                             <div class="space-y-2 mb-4">
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_5" value="a" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">a) No es mi fortaleza y probablemente otros lo hagan mejor</span></label>
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_5" value="b" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">b) Puedo hacerlo, pero me cuesta o me genera inseguridad</span></label>
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_5" value="c" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">c) Es una oportunidad clara de aprendizaje y crecimiento</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_5" value="a" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">a) No es mi fortaleza y probablemente otros lo hagan mejor</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_5" value="b" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">b) Puedo hacerlo, pero me cuesta o me genera inseguridad</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_5" value="c" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">c) Es una oportunidad clara de aprendizaje y crecimiento</span></label>
                             </div>
-                            <button type="button" onclick="responderCheckpoint(5)" class="w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
+                            <button type="button" onclick="responderCheckpoint(5)" class="checkpoint-submit-btn w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
                             <div id="checkpoint_result_5" class="hidden mt-4 p-4 rounded-xl border border-crowdarGreen/40 bg-slate-900/80 space-y-2"></div>
                         </div>
+                        </div>
                     </div>
-                </details>
-
-                <!-- 6. Creencias y biología -->
-                <details class="encuentro1-detail group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
-                    <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-white list-none">
-                        <span>6. Creencias y biología</span>
-                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-crowdarGreen"></i></span>
-                    </summary>
-                    <div class="px-5 pb-5 pt-0">
+                    <div class="encuentro1-step" data-step="6">
+                        <div class="px-5 pb-5 pt-0">
+                            <h3 class="text-lg font-semibold text-white mb-3">6. Creencias y biología</h3>
                         <p class="text-gray-400 text-sm mb-4">Las creencias influyen en la biología del cuerpo y en la forma en que respondemos al entorno (Lipton).</p>
                         <p class="text-crowdarGreen text-sm font-medium mb-4">Dinámica: Cuerpo en amenaza vs. cuerpo en seguridad. Recordar situación de alta exigencia → registrar sensaciones; luego situación de confianza y logro → comparar estados. Reflexión: ¿Desde qué estado rindo mejor? ¿Qué estado habito más?</p>
                         <div class="glass-effect rounded-xl p-5 border border-crowdarGreen/30">
                             <p class="text-crowdarGreen font-semibold text-sm mb-3 flex items-center gap-2"><i class="fas fa-check-circle"></i> Checkpoint</p>
                             <p class="text-gray-300 text-sm mb-3">Bajo presión, mi estado corporal y mental suele ser:</p>
                             <div class="space-y-2 mb-4">
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_6" value="a" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">a) Tensión alta, apuro y dificultad para pensar con claridad</span></label>
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_6" value="b" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">b) Activación moderada, con momentos de foco y dispersión</span></label>
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_6" value="c" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">c) Activación controlada que me ayuda a rendir mejor</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_6" value="a" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">a) Tensión alta, apuro y dificultad para pensar con claridad</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_6" value="b" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">b) Activación moderada, con momentos de foco y dispersión</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_6" value="c" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">c) Activación controlada que me ayuda a rendir mejor</span></label>
                             </div>
-                            <button type="button" onclick="responderCheckpoint(6)" class="w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
+                            <button type="button" onclick="responderCheckpoint(6)" class="checkpoint-submit-btn w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
                             <div id="checkpoint_result_6" class="hidden mt-4 p-4 rounded-xl border border-crowdarGreen/40 bg-slate-900/80 space-y-2"></div>
                         </div>
+                        </div>
                     </div>
-                </details>
-
-                <!-- 7. Automatismos -->
-                <details class="encuentro1-detail group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
-                    <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-white list-none">
-                        <span>7. Automatismos</span>
-                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-crowdarGreen"></i></span>
-                    </summary>
-                    <div class="px-5 pb-5 pt-0">
+                    <div class="encuentro1-step" data-step="7">
+                        <div class="px-5 pb-5 pt-0">
+                            <h3 class="text-lg font-semibold text-white mb-3">7. Automatismos</h3>
                         <p class="text-gray-400 text-sm mb-4">El cerebro automatiza patrones de pensamiento, emoción y acción que refuerzan lo conocido, incluso cuando limita el desempeño (Dispenza).</p>
                         <p class="text-crowdarGreen text-sm font-medium mb-4">Dinámica: Piloto automático. ¿Qué hago siempre igual en situaciones de presión? ¿Qué emoción se activa automáticamente? ¿Qué resultado repito? Trabajo en parejas: el otro devuelve el patrón observado.</p>
                         <div class="glass-effect rounded-xl p-5 border border-crowdarGreen/30">
                             <p class="text-crowdarGreen font-semibold text-sm mb-3 flex items-center gap-2"><i class="fas fa-check-circle"></i> Checkpoint</p>
                             <p class="text-gray-300 text-sm mb-3">Cuando el sprint se complica, suelo:</p>
                             <div class="space-y-2 mb-4">
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_7" value="a" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">a) Hacer más horas y asumir más carga sin pedir ayuda</span></label>
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_7" value="b" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">b) Cumplir con lo mío y reducir interacción</span></label>
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_7" value="c" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">c) Pedir ayuda, renegociar y priorizar conscientemente</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_7" value="a" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">a) Hacer más horas y asumir más carga sin pedir ayuda</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_7" value="b" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">b) Cumplir con lo mío y reducir interacción</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_7" value="c" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">c) Pedir ayuda, renegociar y priorizar conscientemente</span></label>
                             </div>
-                            <button type="button" onclick="responderCheckpoint(7)" class="w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
+                            <button type="button" onclick="responderCheckpoint(7)" class="checkpoint-submit-btn w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
                             <div id="checkpoint_result_7" class="hidden mt-4 p-4 rounded-xl border border-crowdarGreen/40 bg-slate-900/80 space-y-2"></div>
                         </div>
+                        </div>
                     </div>
-                </details>
-
-                <!-- 8. Aprender a aprender -->
-                <details class="encuentro1-detail group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
-                    <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-white list-none">
-                        <span>8. Aprender a aprender</span>
-                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-crowdarGreen"></i></span>
-                    </summary>
-                    <div class="px-5 pb-5 pt-0">
+                    <div class="encuentro1-step" data-step="8">
+                        <div class="px-5 pb-5 pt-0">
+                            <h3 class="text-lg font-semibold text-white mb-3">8. Aprender a aprender</h3>
                         <p class="text-gray-400 text-sm mb-4">El aprendizaje transformacional requiere interrumpir automatismos y sostener nuevas prácticas conscientes en el tiempo.</p>
                         <p class="text-crowdarGreen text-sm font-medium mb-4">Dinámica: Interrupción consciente. Elegir un automatismo detectado → ¿Qué podría hacer distinto la próxima vez? ¿Qué necesito practicar conscientemente? Cierre: diferenciar información vs. transformación.</p>
                         <div class="glass-effect rounded-xl p-5 border border-crowdarGreen/30">
                             <p class="text-crowdarGreen font-semibold text-sm mb-3 flex items-center gap-2"><i class="fas fa-check-circle"></i> Checkpoint</p>
                             <p class="text-gray-300 text-sm mb-3">Frente a un error o dificultad, mi actitud predominante es:</p>
                             <div class="space-y-2 mb-4">
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_8" value="a" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">a) Tratar de evitar que vuelva a pasar sin revisarlo mucho</span></label>
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_8" value="b" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">b) Analizarlo cuando hay tiempo</span></label>
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_8" value="c" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">c) Tomarlo como insumo explícito de mejora</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_8" value="a" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">a) Tratar de evitar que vuelva a pasar sin revisarlo mucho</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_8" value="b" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">b) Analizarlo cuando hay tiempo</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_8" value="c" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">c) Tomarlo como insumo explícito de mejora</span></label>
                             </div>
-                            <button type="button" onclick="responderCheckpoint(8)" class="w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
+                            <button type="button" onclick="responderCheckpoint(8)" class="checkpoint-submit-btn w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
                             <div id="checkpoint_result_8" class="hidden mt-4 p-4 rounded-xl border border-crowdarGreen/40 bg-slate-900/80 space-y-2"></div>
                         </div>
+                        </div>
                     </div>
-                </details>
-
-                <!-- 9. Emoción y rendimiento -->
-                <details class="encuentro1-detail group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
-                    <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-white list-none">
-                        <span>9. Emoción y rendimiento</span>
-                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-crowdarGreen"></i></span>
-                    </summary>
-                    <div class="px-5 pb-5 pt-0">
+                    <div class="encuentro1-step" data-step="9">
+                        <div class="px-5 pb-5 pt-0">
+                            <h3 class="text-lg font-semibold text-white mb-3">9. Emoción y rendimiento</h3>
                         <p class="text-gray-400 text-sm mb-4">El estado emocional impacta directamente en la atención, la toma de decisiones y la productividad.</p>
                         <p class="text-crowdarGreen text-sm font-medium mb-4">Dinámica: Emoción dominante en mi trabajo. Identificar: emoción más frecuente en la semana laboral; cómo impacta en foco, decisiones y productividad. Reflexión grupal: ¿Qué emociones habilitan mejores resultados?</p>
                         <div class="glass-effect rounded-xl p-5 border border-crowdarGreen/30">
                             <p class="text-crowdarGreen font-semibold text-sm mb-3 flex items-center gap-2"><i class="fas fa-check-circle"></i> Checkpoint</p>
                             <p class="text-gray-300 text-sm mb-3">La emoción que más aparece en mi semana laboral es:</p>
                             <div class="space-y-2 mb-4">
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_9" value="a" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">a) Estrés / presión</span></label>
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_9" value="b" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">b) Compromiso con altibajos</span></label>
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_9" value="c" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">c) Interés / foco / motivación</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_9" value="a" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">a) Estrés / presión</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_9" value="b" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">b) Compromiso con altibajos</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_9" value="c" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">c) Interés / foco / motivación</span></label>
                             </div>
-                            <button type="button" onclick="responderCheckpoint(9)" class="w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
+                            <button type="button" onclick="responderCheckpoint(9)" class="checkpoint-submit-btn w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
                             <div id="checkpoint_result_9" class="hidden mt-4 p-4 rounded-xl border border-crowdarGreen/40 bg-slate-900/80 space-y-2"></div>
                         </div>
+                        </div>
                     </div>
-                </details>
-
-                <!-- 10. Estrés crónico -->
-                <details class="encuentro1-detail group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
-                    <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-white list-none">
-                        <span>10. Estrés crónico</span>
-                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-crowdarGreen"></i></span>
-                    </summary>
-                    <div class="px-5 pb-5 pt-0">
+                    <div class="encuentro1-step" data-step="10">
+                        <div class="px-5 pb-5 pt-0">
+                            <h3 class="text-lg font-semibold text-white mb-3">10. Estrés crónico</h3>
                         <p class="text-gray-400 text-sm mb-4">El estado emocional es un factor estructural del desempeño. Tomar conciencia del estrés sostenido normalizado.</p>
                         <p class="text-crowdarGreen text-sm font-medium mb-4">Dinámica: Mi nivel de alerta. Autoevaluación (escala 1–10): nivel de cansancio, urgencia constante, dificultad para desconectar. Cierre: normalización ≠ salud.</p>
                         <div class="glass-effect rounded-xl p-5 border border-crowdarGreen/30">
                             <p class="text-crowdarGreen font-semibold text-sm mb-3 flex items-center gap-2"><i class="fas fa-check-circle"></i> Checkpoint</p>
                             <p class="text-gray-300 text-sm mb-3">En relación con el estrés laboral, siento que:</p>
                             <div class="space-y-2 mb-4">
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_10" value="a" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">a) Estoy en modo urgencia casi constante</span></label>
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_10" value="b" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">b) Tengo picos de estrés, pero logro regularlos</span></label>
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_10" value="c" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">c) Manejo bien la exigencia y los descansos</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_10" value="a" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">a) Estoy en modo urgencia casi constante</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_10" value="b" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">b) Tengo picos de estrés, pero logro regularlos</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_10" value="c" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">c) Manejo bien la exigencia y los descansos</span></label>
                             </div>
-                            <button type="button" onclick="responderCheckpoint(10)" class="w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
+                            <button type="button" onclick="responderCheckpoint(10)" class="checkpoint-submit-btn w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
                             <div id="checkpoint_result_10" class="hidden mt-4 p-4 rounded-xl border border-crowdarGreen/40 bg-slate-900/80 space-y-2"></div>
                         </div>
+                        </div>
                     </div>
-                </details>
-
-                <!-- 11. Vínculos seguros -->
-                <details class="encuentro1-detail group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
-                    <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-white list-none">
-                        <span>11. Vínculos seguros</span>
-                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-crowdarGreen"></i></span>
-                    </summary>
-                    <div class="px-5 pb-5 pt-0">
+                    <div class="encuentro1-step" data-step="11">
+                        <div class="px-5 pb-5 pt-0">
+                            <h3 class="text-lg font-semibold text-white mb-3">11. Vínculos seguros</h3>
                         <p class="text-gray-400 text-sm mb-4">La confianza y la coherencia vincular favorecen bienestar, compromiso y aprendizaje.</p>
                         <p class="text-crowdarGreen text-sm font-medium mb-4">Dinámica: Dónde me siento seguro/a. ¿En qué espacios me siento escuchado/a? ¿Dónde me callo o me cuido? Reflexión: relación entre seguridad y aporte de valor.</p>
                         <div class="glass-effect rounded-xl p-5 border border-crowdarGreen/30">
                             <p class="text-crowdarGreen font-semibold text-sm mb-3 flex items-center gap-2"><i class="fas fa-check-circle"></i> Checkpoint</p>
                             <p class="text-gray-300 text-sm mb-3">En mi equipo, me siento cómodo/a para:</p>
                             <div class="space-y-2 mb-4">
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_11" value="a" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">a) Hablar solo cuando estoy seguro/a de tener razón</span></label>
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_11" value="b" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">b) Opinar en algunos espacios, no en todos</span></label>
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_11" value="c" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">c) Expresar dudas, errores o desacuerdos abiertamente</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_11" value="a" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">a) Hablar solo cuando estoy seguro/a de tener razón</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_11" value="b" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">b) Opinar en algunos espacios, no en todos</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_11" value="c" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">c) Expresar dudas, errores o desacuerdos abiertamente</span></label>
                             </div>
-                            <button type="button" onclick="responderCheckpoint(11)" class="w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
+                            <button type="button" onclick="responderCheckpoint(11)" class="checkpoint-submit-btn w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
                             <div id="checkpoint_result_11" class="hidden mt-4 p-4 rounded-xl border border-crowdarGreen/40 bg-slate-900/80 space-y-2"></div>
                         </div>
+                        </div>
                     </div>
-                </details>
-
-                <!-- 12. Coaching -->
-                <details class="encuentro1-detail group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
-                    <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-white list-none">
-                        <span>12. Coaching</span>
-                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-crowdarGreen"></i></span>
-                    </summary>
-                    <div class="px-5 pb-5 pt-0">
+                    <div class="encuentro1-step" data-step="12">
+                        <div class="px-5 pb-5 pt-0">
+                            <h3 class="text-lg font-semibold text-white mb-3">12. Coaching</h3>
                         <p class="text-gray-400 text-sm mb-4">El coaching propone un modelo de aprendizaje basado en conciencia y responsabilidad. No dice qué hacer, sino acompaña a observar desde qué lugar se actúa.</p>
                         <p class="text-crowdarGreen text-sm font-medium mb-4">Dinámica: Pregunta poderosa. En parejas: uno trae un desafío laboral; el otro solo puede preguntar (no aconsejar). Cierre: ¿Qué pasó cuando no me dijeron qué hacer?</p>
                         <div class="glass-effect rounded-xl p-5 border border-crowdarGreen/30">
                             <p class="text-crowdarGreen font-semibold text-sm mb-3 flex items-center gap-2"><i class="fas fa-check-circle"></i> Checkpoint</p>
                             <p class="text-gray-300 text-sm mb-3">Cuando tengo un problema, me resulta más útil:</p>
                             <div class="space-y-2 mb-4">
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_12" value="a" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">a) Que me digan exactamente qué hacer</span></label>
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_12" value="b" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">b) Escuchar experiencias similares</span></label>
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_12" value="c" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">c) Que me ayuden a pensar mis propias opciones</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_12" value="a" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">a) Que me digan exactamente qué hacer</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_12" value="b" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">b) Escuchar experiencias similares</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_12" value="c" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">c) Que me ayuden a pensar mis propias opciones</span></label>
                             </div>
-                            <button type="button" onclick="responderCheckpoint(12)" class="w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
+                            <button type="button" onclick="responderCheckpoint(12)" class="checkpoint-submit-btn w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
                             <div id="checkpoint_result_12" class="hidden mt-4 p-4 rounded-xl border border-crowdarGreen/40 bg-slate-900/80 space-y-2"></div>
                         </div>
+                        </div>
                     </div>
-                </details>
-
-                <!-- 13. Protagonismo -->
-                <details class="encuentro1-detail group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
-                    <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-white list-none">
-                        <span>13. Protagonismo</span>
-                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-crowdarGreen"></i></span>
-                    </summary>
-                    <div class="px-5 pb-5 pt-0">
+                    <div class="encuentro1-step" data-step="13">
+                        <div class="px-5 pb-5 pt-0">
+                            <h3 class="text-lg font-semibold text-white mb-3">13. Protagonismo</h3>
                         <p class="text-gray-400 text-sm mb-4">Diferenciar víctima de protagonista.</p>
                         <p class="text-crowdarGreen text-sm font-medium mb-4">Dinámica: De la queja a la acción. Traer una queja frecuente → transformarla en: ¿Qué sí puedo hacer yo? Cierre: responsabilidad ≠ culpa.</p>
                         <div class="glass-effect rounded-xl p-5 border border-crowdarGreen/30">
                             <p class="text-crowdarGreen font-semibold text-sm mb-3 flex items-center gap-2"><i class="fas fa-check-circle"></i> Checkpoint</p>
                             <p class="text-gray-300 text-sm mb-3">Ante un bloqueo laboral, mi reacción más común es:</p>
                             <div class="space-y-2 mb-4">
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_13" value="a" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">a) Esperar definiciones o decisiones externas</span></label>
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_13" value="b" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">b) Hacer lo posible dentro de mi rol</span></label>
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_13" value="c" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">c) Buscar activamente alternativas y acciones propias</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_13" value="a" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">a) Esperar definiciones o decisiones externas</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_13" value="b" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">b) Hacer lo posible dentro de mi rol</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_13" value="c" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">c) Buscar activamente alternativas y acciones propias</span></label>
                             </div>
-                            <button type="button" onclick="responderCheckpoint(13)" class="w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
+                            <button type="button" onclick="responderCheckpoint(13)" class="checkpoint-submit-btn w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
                             <div id="checkpoint_result_13" class="hidden mt-4 p-4 rounded-xl border border-crowdarGreen/40 bg-slate-900/80 space-y-2"></div>
                         </div>
+                        </div>
                     </div>
-                </details>
-
-                <!-- 14. Equipos -->
-                <details class="encuentro1-detail group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
-                    <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-white list-none">
-                        <span>14. Equipos</span>
-                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-crowdarGreen"></i></span>
-                    </summary>
-                    <div class="px-5 pb-5 pt-0">
+                    <div class="encuentro1-step" data-step="14">
+                        <div class="px-5 pb-5 pt-0">
+                            <h3 class="text-lg font-semibold text-white mb-3">14. Equipos</h3>
                         <p class="text-gray-400 text-sm mb-4">El desempeño individual se expresa y amplifica en el contexto de los equipos y los sistemas organizacionales.</p>
                         <p class="text-crowdarGreen text-sm font-medium mb-4">Dinámica: Yo dentro del sistema. ¿Cómo impacta mi estado emocional en el equipo? ¿Qué habilito y qué bloqueo? Reflexión: interdependencia real.</p>
                         <div class="glass-effect rounded-xl p-5 border border-crowdarGreen/30">
                             <p class="text-crowdarGreen font-semibold text-sm mb-3 flex items-center gap-2"><i class="fas fa-check-circle"></i> Checkpoint</p>
                             <p class="text-gray-300 text-sm mb-3">Considero el impacto de mi trabajo en otros roles:</p>
                             <div class="space-y-2 mb-4">
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_14" value="a" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">a) Solo cuando hay problemas</span></label>
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_14" value="b" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">b) En situaciones clave</span></label>
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_14" value="c" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">c) De manera habitual y preventiva</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_14" value="a" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">a) Solo cuando hay problemas</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_14" value="b" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">b) En situaciones clave</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_14" value="c" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">c) De manera habitual y preventiva</span></label>
                             </div>
-                            <button type="button" onclick="responderCheckpoint(14)" class="w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
+                            <button type="button" onclick="responderCheckpoint(14)" class="checkpoint-submit-btn w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
                             <div id="checkpoint_result_14" class="hidden mt-4 p-4 rounded-xl border border-crowdarGreen/40 bg-slate-900/80 space-y-2"></div>
                         </div>
+                        </div>
                     </div>
-                </details>
-
-                <!-- 15. Confianza -->
-                <details class="encuentro1-detail group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
-                    <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-white list-none">
-                        <span>15. Confianza</span>
-                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-crowdarGreen"></i></span>
-                    </summary>
-                    <div class="px-5 pb-5 pt-0">
+                    <div class="encuentro1-step" data-step="15">
+                        <div class="px-5 pb-5 pt-0">
+                            <h3 class="text-lg font-semibold text-white mb-3">15. Confianza</h3>
                         <p class="text-gray-400 text-sm mb-4">La confianza es el fundamento de los equipos efectivos (Lencioni).</p>
                         <p class="text-crowdarGreen text-sm font-medium mb-4">Dinámica: Lo que no se dice. ¿Qué conversaciones evito en mi equipo? ¿Qué costo tiene eso? Cierre: confianza como base del desempeño.</p>
                         <div class="glass-effect rounded-xl p-5 border border-crowdarGreen/30">
                             <p class="text-crowdarGreen font-semibold text-sm mb-3 flex items-center gap-2"><i class="fas fa-check-circle"></i> Checkpoint</p>
                             <p class="text-gray-300 text-sm mb-3">En mi equipo, las conversaciones difíciles:</p>
                             <div class="space-y-2 mb-4">
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_15" value="a" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">a) Se evitan o se postergan</span></label>
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_15" value="b" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">b) Se dan solo en ciertos casos</span></label>
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_15" value="c" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">c) Se abordan de forma directa y respetuosa</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_15" value="a" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">a) Se evitan o se postergan</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_15" value="b" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">b) Se dan solo en ciertos casos</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_15" value="c" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">c) Se abordan de forma directa y respetuosa</span></label>
                             </div>
-                            <button type="button" onclick="responderCheckpoint(15)" class="w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
+                            <button type="button" onclick="responderCheckpoint(15)" class="checkpoint-submit-btn w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
                             <div id="checkpoint_result_15" class="hidden mt-4 p-4 rounded-xl border border-crowdarGreen/40 bg-slate-900/80 space-y-2"></div>
                         </div>
+                        </div>
                     </div>
-                </details>
-
-                <!-- 16. Mirada sistémica -->
-                <details class="encuentro1-detail group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
-                    <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-white list-none">
-                        <span>16. Mirada sistémica</span>
-                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-crowdarGreen"></i></span>
-                    </summary>
-                    <div class="px-5 pb-5 pt-0">
+                    <div class="encuentro1-step" data-step="16">
+                        <div class="px-5 pb-5 pt-0">
+                            <h3 class="text-lg font-semibold text-white mb-3">16. Mirada sistémica</h3>
                         <p class="text-gray-400 text-sm mb-4">Los equipos existen para servir a un propósito mayor dentro del sistema organizacional.</p>
                         <p class="text-crowdarGreen text-sm font-medium mb-4">Dinámica: Propósito ampliado. ¿A qué sirve mi trabajo dentro del todo? ¿Quién se ve impactado por lo que hago?</p>
                         <div class="glass-effect rounded-xl p-5 border border-crowdarGreen/30">
                             <p class="text-crowdarGreen font-semibold text-sm mb-3 flex items-center gap-2"><i class="fas fa-check-circle"></i> Checkpoint</p>
                             <p class="text-gray-300 text-sm mb-3">Tengo claridad sobre:</p>
                             <div class="space-y-2 mb-4">
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_16" value="a" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">a) Mis tareas, pero no sobre el impacto final</span></label>
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_16" value="b" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">b) El impacto general, aunque no siempre presente</span></label>
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_16" value="c" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">c) Cómo mi trabajo aporta al propósito del equipo</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_16" value="a" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">a) Mis tareas, pero no sobre el impacto final</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_16" value="b" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">b) El impacto general, aunque no siempre presente</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_16" value="c" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">c) Cómo mi trabajo aporta al propósito del equipo</span></label>
                             </div>
-                            <button type="button" onclick="responderCheckpoint(16)" class="w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
+                            <button type="button" onclick="responderCheckpoint(16)" class="checkpoint-submit-btn w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
                             <div id="checkpoint_result_16" class="hidden mt-4 p-4 rounded-xl border border-crowdarGreen/40 bg-slate-900/80 space-y-2"></div>
                         </div>
+                        </div>
                     </div>
-                </details>
-
-                <!-- 17. Lenguaje -->
-                <details class="encuentro1-detail group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
-                    <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-white list-none">
-                        <span>17. Lenguaje</span>
-                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-crowdarGreen"></i></span>
-                    </summary>
-                    <div class="px-5 pb-5 pt-0">
+                    <div class="encuentro1-step" data-step="17">
+                        <div class="px-5 pb-5 pt-0">
+                            <h3 class="text-lg font-semibold text-white mb-3">17. Lenguaje</h3>
                         <p class="text-gray-400 text-sm mb-4">El lenguaje no solo describe la realidad: la genera.</p>
                         <p class="text-crowdarGreen text-sm font-medium mb-4">Dinámica: Frases que crean realidad. Detectar frases frecuentes: «Siempre…», «Nunca…», «No se puede…». Reflexión: ¿Qué mundo crea este lenguaje?</p>
                         <div class="glass-effect rounded-xl p-5 border border-crowdarGreen/30">
                             <p class="text-crowdarGreen font-semibold text-sm mb-3 flex items-center gap-2"><i class="fas fa-check-circle"></i> Checkpoint</p>
                             <p class="text-gray-300 text-sm mb-3">En el día a día, escucho o uso frases como «no se puede»:</p>
                             <div class="space-y-2 mb-4">
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_17" value="a" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">a) Muy frecuentemente</span></label>
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_17" value="b" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">b) Ocasionalmente</span></label>
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_17" value="c" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">c) Rara vez</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_17" value="a" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">a) Muy frecuentemente</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_17" value="b" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">b) Ocasionalmente</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_17" value="c" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">c) Rara vez</span></label>
                             </div>
-                            <button type="button" onclick="responderCheckpoint(17)" class="w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
+                            <button type="button" onclick="responderCheckpoint(17)" class="checkpoint-submit-btn w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
                             <div id="checkpoint_result_17" class="hidden mt-4 p-4 rounded-xl border border-crowdarGreen/40 bg-slate-900/80 space-y-2"></div>
                         </div>
+                        </div>
                     </div>
-                </details>
-
-                <!-- 18. Conversaciones conscientes -->
-                <details class="encuentro1-detail group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
-                    <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-white list-none">
-                        <span>18. Conversaciones conscientes</span>
-                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-crowdarGreen"></i></span>
-                    </summary>
-                    <div class="px-5 pb-5 pt-0">
+                    <div class="encuentro1-step" data-step="18">
+                        <div class="px-5 pb-5 pt-0">
+                            <h3 class="text-lg font-semibold text-white mb-3">18. Conversaciones conscientes</h3>
                         <p class="text-gray-400 text-sm mb-4">A través de las conversaciones se crean compromisos, se coordinan acciones y se construyen realidades.</p>
                         <p class="text-crowdarGreen text-sm font-medium mb-4">Dinámica: Pedido claro. Transformar un reclamo en un pedido claro: qué necesito, para cuándo, para qué.</p>
                         <div class="glass-effect rounded-xl p-5 border border-crowdarGreen/30">
                             <p class="text-crowdarGreen font-semibold text-sm mb-3 flex items-center gap-2"><i class="fas fa-check-circle"></i> Checkpoint</p>
                             <p class="text-gray-300 text-sm mb-3">Cuando necesito algo de otro rol o área:</p>
                             <div class="space-y-2 mb-4">
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_18" value="a" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">a) Expreso el problema o el reclamo</span></label>
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_18" value="b" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">b) Doy contexto, pero no siempre claridad</span></label>
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_18" value="c" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">c) Hago pedidos claros con objetivo y plazo</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_18" value="a" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">a) Expreso el problema o el reclamo</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_18" value="b" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">b) Doy contexto, pero no siempre claridad</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_18" value="c" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">c) Hago pedidos claros con objetivo y plazo</span></label>
                             </div>
-                            <button type="button" onclick="responderCheckpoint(18)" class="w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
+                            <button type="button" onclick="responderCheckpoint(18)" class="checkpoint-submit-btn w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
                             <div id="checkpoint_result_18" class="hidden mt-4 p-4 rounded-xl border border-crowdarGreen/40 bg-slate-900/80 space-y-2"></div>
                         </div>
+                        </div>
                     </div>
-                </details>
-
-                <!-- 19. Cierre del encuentro -->
-                <details class="encuentro1-detail group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
-                    <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-white list-none">
-                        <span>19. Cierre del encuentro</span>
-                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-crowdarGreen"></i></span>
-                    </summary>
-                    <div class="px-5 pb-5 pt-0">
+                    <div class="encuentro1-step" data-step="19">
+                        <div class="px-5 pb-5 pt-0">
+                            <h3 class="text-lg font-semibold text-white mb-3">19. Cierre del encuentro</h3>
                         <p class="text-gray-400 text-sm mb-4">Este encuentro inaugura un proceso de observación, aprendizaje y transformación que continuará en las próximas sesiones.</p>
                         <p class="text-crowdarGreen text-sm font-medium mb-4">Dinámica: Bitácora de observación. ¿Qué me llevo? ¿Qué voy a observar esta semana? ¿Qué quiero poner en práctica? Cierre emocional: «Este proceso recién empieza».</p>
                         <div class="glass-effect rounded-xl p-5 border border-crowdarGreen/30">
                             <p class="text-crowdarGreen font-semibold text-sm mb-3 flex items-center gap-2"><i class="fas fa-check-circle"></i> Checkpoint final</p>
                             <p class="text-gray-300 text-sm mb-3">Al finalizar este encuentro, me voy con:</p>
                             <div class="space-y-2 mb-4">
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_19" value="a" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">a) Nuevas ideas para pensar</span></label>
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_19" value="b" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">b) Mayor conciencia sobre cómo trabajo</span></label>
-                                <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_19" value="c" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">c) Un experimento concreto para aplicar</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_19" value="a" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">a) Nuevas ideas para pensar</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_19" value="b" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">b) Mayor conciencia sobre cómo trabajo</span></label>
+                                <label class="checkpoint-option flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition"><input type="radio" name="check_19" value="c" class="mt-1 text-crowdarGreen"> <span class="text-sm text-gray-300">c) Un experimento concreto para aplicar</span></label>
                             </div>
-                            <button type="button" onclick="responderCheckpoint(19)" class="w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
+                            <button type="button" onclick="responderCheckpoint(19)" class="checkpoint-submit-btn w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
                             <div id="checkpoint_result_19" class="hidden mt-4 p-4 rounded-xl border border-crowdarGreen/40 bg-slate-900/80 space-y-2"></div>
                         </div>
+                        </div>
                     </div>
-                </details>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1030,20 +1032,99 @@
                 }, ioOpts);
                 document.querySelectorAll('.objetivo-card').forEach(function(el) { observerCards.observe(el); });
 
-                // Details Encuentro 1: entrada escalonada al scroll
-                var detailsE1 = document.querySelectorAll('.encuentro1-detail');
-                var observerDetails = new IntersectionObserver(function(entries) {
-                    entries.forEach(function(entry) {
-                        if (!entry.isIntersecting) return;
-                        var el = entry.target;
-                        if (el._animeDone) return;
-                        el._animeDone = true;
-                        var i = Array.prototype.indexOf.call(detailsE1, el);
-                        anime({ targets: el, opacity: 1, translateY: 0, duration: 500, delay: Math.min(i * 40, 200), easing: 'easeOutExpo' });
-                        observerDetails.unobserve(el);
+                // Encuentro 1: estructura (2-3-4-3) + (2-3-2), contenido a la derecha, flechas next/prev
+                (function() {
+                    var nav = document.getElementById('encuentro1Solar');
+                    if (!nav) return;
+                    var structureWrap = document.getElementById('encuentro1StructureWrap');
+                    var page0 = document.getElementById('encuentro1Page0');
+                    var page1 = document.getElementById('encuentro1Page1');
+                    var btnPrev = document.getElementById('encuentro1Prev');
+                    var btnNext = document.getElementById('encuentro1Next');
+                    var steps = document.querySelectorAll('.encuentro1-step');
+                    var nodes = nav.querySelectorAll('.encuentro1-node');
+                    var currentPage = 0;
+                    var totalPages = 2;
+
+                    function goToPage(page) {
+                        currentPage = page;
+                        if (page0) page0.classList.toggle('is-visible', page === 0);
+                        if (page1) page1.classList.toggle('is-visible', page === 1);
+                        if (btnPrev) btnPrev.disabled = page === 0;
+                        if (btnNext) btnNext.disabled = page === totalPages - 1;
+                    }
+
+                    function setActiveStep(step) {
+                        nodes.forEach(function(n) {
+                            n.classList.toggle('active', parseInt(n.getAttribute('data-step'), 10) === step);
+                        });
+                        steps.forEach(function(s) {
+                            s.classList.toggle('is-visible', parseInt(s.getAttribute('data-step'), 10) === step);
+                        });
+                        if (step >= 1 && step <= 12) goToPage(0);
+                        else if (step >= 13 && step <= 19) goToPage(1);
+                        if (typeof anime !== 'undefined') {
+                            var visible = document.querySelector('.encuentro1-step.is-visible');
+                            if (visible) {
+                                visible.style.opacity = '0';
+                                visible.style.transform = 'translateY(8px)';
+                                anime({ targets: visible, opacity: 1, translateY: 0, duration: 350, easing: 'easeOutExpo' });
+                            }
+                        }
+                    }
+
+                    function triggerBounce(el, bounceClass) {
+                        if (!el) return;
+                        el.classList.remove(bounceClass);
+                        el.offsetHeight;
+                        el.classList.add(bounceClass);
+                        var onEnd = function() { el.classList.remove(bounceClass); el.removeEventListener('animationend', onEnd); };
+                        el.addEventListener('animationend', onEnd);
+                    }
+                    nodes.forEach(function(node) {
+                        node.addEventListener('click', function() {
+                            var step = parseInt(node.getAttribute('data-step'), 10);
+                            setActiveStep(step);
+                            triggerBounce(node, 'encuentro1-node--bounce');
+                        });
                     });
-                }, ioOpts);
-                detailsE1.forEach(function(el) { observerDetails.observe(el); });
+                    if (btnPrev) btnPrev.addEventListener('click', function() { goToPage(0); triggerBounce(btnPrev, 'encuentro1-arrow--bounce'); });
+                    if (btnNext) btnNext.addEventListener('click', function() { goToPage(1); triggerBounce(btnNext, 'encuentro1-arrow--bounce'); });
+
+                    goToPage(0);
+
+                    var layout = nav.closest('.encuentro1-layout');
+                    if (layout && structureWrap && typeof anime !== 'undefined') {
+                        var observerE1 = new IntersectionObserver(function(entries) {
+                            entries.forEach(function(entry) {
+                                if (!entry.isIntersecting) return;
+                                var el = entry.target;
+                                if (el._animeDone) return;
+                                el._animeDone = true;
+                                anime({ targets: structureWrap, opacity: [0.6, 1], translateY: [12, 0], duration: 550, easing: 'easeOutExpo' });
+                            });
+                        }, ioOpts);
+                        observerE1.observe(layout);
+                    }
+                })();
+
+                // Rebote elástico en opciones y botón del checkpoint (Encuentro 1)
+                (function() {
+                    function triggerBounceCheckpoint(el, bounceClass) {
+                        if (!el) return;
+                        el.classList.remove(bounceClass);
+                        el.offsetHeight;
+                        el.classList.add(bounceClass);
+                        var onEnd = function() { el.classList.remove(bounceClass); el.removeEventListener('animationend', onEnd); };
+                        el.addEventListener('animationend', onEnd);
+                    }
+                    document.querySelectorAll('.checkpoint-option').forEach(function(label) {
+                        label.addEventListener('click', function() { triggerBounceCheckpoint(label, 'checkpoint-option--bounce'); });
+                    });
+                    document.querySelectorAll('.checkpoint-submit-btn').forEach(function(btn) {
+                        btn.addEventListener('click', function() { triggerBounceCheckpoint(btn, 'checkpoint-submit-btn--bounce'); });
+                    });
+                })();
 
                 // Temario items (Encuentro 2) al scroll
                 var temarioItems = document.querySelectorAll('.temario-item');
