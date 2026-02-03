@@ -1033,6 +1033,10 @@
             }).then(function() { /* opcional: notificar al bot vía webhook */ }).catch(function(err) { console.warn("Error guardando checkpoint:", err); });
         }
 
+        function participantDocId(email) {
+            return email.trim().toLowerCase().replace(/\./g, '_').replace(/@/g, '_at_');
+        }
+
         function persistInvitacionBot(uid, nombre, email) {
             if (!firestoreDb || !uid || !email || !email.trim()) return Promise.reject(new Error('Faltan datos'));
             const ref = firestoreDb.collection('users').doc(uid).collection('invitacion_bot').doc('encuentro1');
@@ -1041,6 +1045,26 @@
                 email: email.trim().toLowerCase(),
                 encounter: 1,
                 updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+            });
+        }
+
+        function syncParticipantCheckpointsToBot(uid, nombre, email) {
+            if (!firestoreDb || !uid || !email || !email.trim()) return Promise.resolve();
+            var checkpointsRef = firestoreDb.collection('users').doc(uid).collection('checkpoints');
+            return checkpointsRef.get().then(function(snap) {
+                var checkpoints = {};
+                snap.docs.forEach(function(d) {
+                    checkpoints[d.id] = { value: d.data().value, titulo: d.data().titulo || '', texto: d.data().texto || '' };
+                });
+                var docId = participantDocId(email);
+                return firestoreDb.collection('participants').doc(docId).set({
+                    uid: uid,
+                    nombre: (nombre || '').trim() || 'Participante',
+                    email: email.trim().toLowerCase(),
+                    encounter: 1,
+                    checkpoints: checkpoints,
+                    updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                });
             });
         }
 
@@ -1084,10 +1108,14 @@
                 }
                 if (window.currentUser && window.currentUser.uid && typeof persistInvitacionBot === 'function') {
                     persistInvitacionBot(window.currentUser.uid, nombre || 'Participante', email).then(function() {
+                        if (typeof syncParticipantCheckpointsToBot === 'function') {
+                            return syncParticipantCheckpointsToBot(window.currentUser.uid, nombre || 'Participante', email);
+                        }
+                    }).then(function() {
                         var startParam = 'ref_' + btoa(encodeURIComponent(email));
                         window.open('https://t.me/couchQA_bot?start=' + startParam, '_blank', 'noopener');
                     }).catch(function(err) {
-                        console.warn('Error guardando invitación:', err);
+                        console.warn('Error guardando invitación o sync checkpoints:', err);
                         var startParam = 'ref_' + btoa(encodeURIComponent(email));
                         window.open('https://t.me/couchQA_bot?start=' + startParam, '_blank', 'noopener');
                     });
