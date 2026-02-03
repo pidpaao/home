@@ -20,6 +20,16 @@
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        .nav-logo { opacity: 0; }
+        .objetivo-card { opacity: 0.4; transform: translateY(40px); }
+        .encuentro1-header, .encuentro2-header, .programa-header, .cear-header, .temario-header { opacity: 0; transform: translateY(28px); }
+        .cear-box { opacity: 0; transform: translateY(36px); }
+        .encuentro1-detail { opacity: 0; transform: translateY(20px); }
+        .temario-item { opacity: 0; transform: translateY(24px); }
+        .footer-block { opacity: 0; transform: translateY(20px); }
+    </style>
 </head>
 <body class="bg-darkBg text-gray-200 font-sans antialiased selection:bg-crowdarGreen selection:text-crowdarBlue">
 
@@ -27,7 +37,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center">
-                    <a href="#" class="flex-shrink-0">
+                    <a href="#" class="flex-shrink-0 nav-logo">
                         <img src="img/PIDAAO.png" alt="PIDPAAO" class="h-12">
                     </a>
                     <div class="hidden md:block">
@@ -107,15 +117,15 @@
         </div>
 
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
-            <span class="text-crowdarGreen font-semibold tracking-wide uppercase text-sm">Desarrollo Personal Aplicado al Ámbito Organizacional</span>
-            <h1 class="mt-4 text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-6">
+            <span class="hero-subtitle block text-crowdarGreen font-semibold tracking-wide uppercase text-sm opacity-0">Desarrollo Personal Aplicado al Ámbito Organizacional</span>
+            <h1 class="hero-title mt-4 text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-6 opacity-0">
                 Mecanismos de <br>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-crowdarGreen to-emerald-400 glow-text">Programación Mental</span>
             </h1>
-            <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-400">
+            <p class="hero-desc mt-4 max-w-2xl mx-auto text-xl text-gray-400 opacity-0">
                 El cambio no comienza en los resultados, sino en la forma en que interpretamos la realidad. Eleva tu nivel de conciencia para un desempeño responsable y sostenible.
             </p>
-            <div class="mt-10 flex justify-center gap-4">
+            <div class="hero-btns mt-10 flex justify-center gap-4 opacity-0">
                 <a href="#encuentro1" class="border border-crowdarGreen text-crowdarGreen hover:bg-crowdarGreen hover:text-darkBg px-8 py-3 rounded-lg font-semibold transition">
                     <i class="fas fa-book-open mr-2"></i> Encuentro 1
                 </a>
@@ -127,7 +137,7 @@
     </section>
 
     <!-- Aviso: inicia sesión para guardar tu progreso (persistencia y bot coaching) -->
-    <div id="bannerLogin" class="hidden fixed bottom-4 left-4 right-4 md:left-auto md:right-4 md:max-w-sm z-40 p-4 glass-effect rounded-xl border border-crowdarGreen/30 shadow-lg">
+    <div id="bannerLogin" class="hidden fixed bottom-4 left-4 right-4 md:left-auto md:right-4 md:max-w-sm z-40 p-4 glass-effect rounded-xl border border-crowdarGreen/30 shadow-lg banner-login-box">
         <p class="text-sm text-gray-200 mb-2"><i class="fas fa-cloud-upload-alt text-crowdarGreen mr-2"></i>Iniciá sesión con Google para guardar tus respuestas y que el bot de coaching pueda acompañarte con tu historial.</p>
         <button type="button" id="bannerLoginBtn" class="w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition text-sm">Iniciar sesión con Google</button>
     </div>
@@ -135,7 +145,7 @@
     <!-- ========== ENCUENTRO 1: Fundamentos Ontológicos, Emocionales y Sistémicos del Aprendizaje ========== -->
     <section id="encuentro1" class="py-20 bg-slate-800 border-t border-slate-700">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-14">
+            <div class="text-center mb-14 encuentro1-header">
                 <span class="bg-crowdarGreen/20 text-crowdarGreen text-xs font-bold px-3 py-1 rounded-full">PRIMER ENCUENTRO</span>
                 <h2 class="text-3xl font-bold text-white mt-4">Encuentro 1 – Fundamentos Ontológicos, Emocionales y Sistémicos del Aprendizaje</h2>
                 <p class="mt-3 text-gray-400 max-w-2xl mx-auto">
@@ -145,7 +155,7 @@
 
             <div class="space-y-4">
                 <!-- 1. Presentación e introducción -->
-                <details class="group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
+                <details class="encuentro1-detail group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
                     <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-white list-none">
                         <span>1. Presentación e introducción</span>
                         <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-crowdarGreen"></i></span>
@@ -167,7 +177,7 @@
                 </details>
 
                 <!-- 2. Apertura del proceso -->
-                <details class="group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
+                <details class="encuentro1-detail group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
                     <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-white list-none">
                         <span>2. Apertura del proceso</span>
                         <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-crowdarGreen"></i></span>
@@ -190,7 +200,7 @@
                 </details>
 
                 <!-- 3. Sentido del Encuentro 1 -->
-                <details class="group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
+                <details class="encuentro1-detail group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
                     <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-white list-none">
                         <span>3. Sentido del Encuentro 1</span>
                         <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-crowdarGreen"></i></span>
@@ -202,7 +212,7 @@
                 </details>
 
                 <!-- 4. Personas como observadores -->
-                <details class="group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
+                <details class="encuentro1-detail group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
                     <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-white list-none">
                         <span>4. Personas como observadores</span>
                         <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-crowdarGreen"></i></span>
@@ -225,7 +235,7 @@
                 </details>
 
                 <!-- 5. Creencias -->
-                <details class="group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
+                <details class="encuentro1-detail group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
                     <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-white list-none">
                         <span>5. Creencias</span>
                         <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-crowdarGreen"></i></span>
@@ -248,7 +258,7 @@
                 </details>
 
                 <!-- 6. Creencias y biología -->
-                <details class="group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
+                <details class="encuentro1-detail group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
                     <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-white list-none">
                         <span>6. Creencias y biología</span>
                         <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-crowdarGreen"></i></span>
@@ -271,7 +281,7 @@
                 </details>
 
                 <!-- 7. Automatismos -->
-                <details class="group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
+                <details class="encuentro1-detail group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
                     <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-white list-none">
                         <span>7. Automatismos</span>
                         <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-crowdarGreen"></i></span>
@@ -294,7 +304,7 @@
                 </details>
 
                 <!-- 8. Aprender a aprender -->
-                <details class="group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
+                <details class="encuentro1-detail group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
                     <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-white list-none">
                         <span>8. Aprender a aprender</span>
                         <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-crowdarGreen"></i></span>
@@ -317,7 +327,7 @@
                 </details>
 
                 <!-- 9. Emoción y rendimiento -->
-                <details class="group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
+                <details class="encuentro1-detail group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
                     <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-white list-none">
                         <span>9. Emoción y rendimiento</span>
                         <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-crowdarGreen"></i></span>
@@ -340,7 +350,7 @@
                 </details>
 
                 <!-- 10. Estrés crónico -->
-                <details class="group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
+                <details class="encuentro1-detail group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
                     <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-white list-none">
                         <span>10. Estrés crónico</span>
                         <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-crowdarGreen"></i></span>
@@ -363,7 +373,7 @@
                 </details>
 
                 <!-- 11. Vínculos seguros -->
-                <details class="group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
+                <details class="encuentro1-detail group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
                     <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-white list-none">
                         <span>11. Vínculos seguros</span>
                         <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-crowdarGreen"></i></span>
@@ -386,7 +396,7 @@
                 </details>
 
                 <!-- 12. Coaching -->
-                <details class="group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
+                <details class="encuentro1-detail group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
                     <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-white list-none">
                         <span>12. Coaching</span>
                         <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-crowdarGreen"></i></span>
@@ -409,7 +419,7 @@
                 </details>
 
                 <!-- 13. Protagonismo -->
-                <details class="group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
+                <details class="encuentro1-detail group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
                     <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-white list-none">
                         <span>13. Protagonismo</span>
                         <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-crowdarGreen"></i></span>
@@ -432,7 +442,7 @@
                 </details>
 
                 <!-- 14. Equipos -->
-                <details class="group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
+                <details class="encuentro1-detail group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
                     <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-white list-none">
                         <span>14. Equipos</span>
                         <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-crowdarGreen"></i></span>
@@ -455,7 +465,7 @@
                 </details>
 
                 <!-- 15. Confianza -->
-                <details class="group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
+                <details class="encuentro1-detail group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
                     <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-white list-none">
                         <span>15. Confianza</span>
                         <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-crowdarGreen"></i></span>
@@ -478,7 +488,7 @@
                 </details>
 
                 <!-- 16. Mirada sistémica -->
-                <details class="group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
+                <details class="encuentro1-detail group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
                     <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-white list-none">
                         <span>16. Mirada sistémica</span>
                         <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-crowdarGreen"></i></span>
@@ -501,7 +511,7 @@
                 </details>
 
                 <!-- 17. Lenguaje -->
-                <details class="group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
+                <details class="encuentro1-detail group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
                     <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-white list-none">
                         <span>17. Lenguaje</span>
                         <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-crowdarGreen"></i></span>
@@ -524,7 +534,7 @@
                 </details>
 
                 <!-- 18. Conversaciones conscientes -->
-                <details class="group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
+                <details class="encuentro1-detail group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
                     <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-white list-none">
                         <span>18. Conversaciones conscientes</span>
                         <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-crowdarGreen"></i></span>
@@ -547,7 +557,7 @@
                 </details>
 
                 <!-- 19. Cierre del encuentro -->
-                <details class="group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
+                <details class="encuentro1-detail group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue border border-slate-700">
                     <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-white list-none">
                         <span>19. Cierre del encuentro</span>
                         <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-crowdarGreen"></i></span>
@@ -575,7 +585,7 @@
     <!-- ========== ENCUENTRO 2: Mecanismos de Programación Mental, Creencias y Resultados ========== -->
     <section id="encuentro2" class="py-16 bg-slate-900 border-t border-slate-700">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
+            <div class="text-center mb-12 encuentro2-header">
                 <span class="bg-crowdarBlue/30 text-crowdarGreen text-xs font-bold px-3 py-1 rounded-full">SEGUNDO ENCUENTRO</span>
                 <h2 class="text-3xl font-bold text-white mt-4">Encuentro 2 – Niveles de Conciencia, C-E-A-R y Juicios</h2>
                 <p class="mt-3 text-gray-400 max-w-2xl mx-auto">
@@ -587,27 +597,27 @@
 
     <section id="programa" class="py-20 bg-slate-900 pt-0">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
+            <div class="text-center mb-16 programa-header">
                 <h2 class="text-3xl font-bold text-white">Objetivos de la Intervención</h2>
                 <p class="mt-2 text-gray-400">Transformando creencias en resultados organizacionales.</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="p-8 rounded-2xl bg-slate-800 border border-slate-700 hover:border-crowdarGreen transition group">
+                <div class="objetivo-card p-8 rounded-2xl bg-slate-800 border border-slate-700 hover:border-crowdarGreen transition group">
                     <div class="w-12 h-12 bg-crowdarBlue/50 rounded-lg flex items-center justify-center mb-4 group-hover:bg-crowdarGreen group-hover:text-darkBg transition">
                         <i class="fas fa-brain text-xl"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-2">Conciencia</h3>
                     <p class="text-gray-400">Identificar creencias sociales y personales que impactan en el desempeño laboral y la toma de decisiones.</p>
                 </div>
-                <div class="p-8 rounded-2xl bg-slate-800 border border-slate-700 hover:border-crowdarGreen transition group">
+                <div class="objetivo-card p-8 rounded-2xl bg-slate-800 border border-slate-700 hover:border-crowdarGreen transition group">
                     <div class="w-12 h-12 bg-crowdarBlue/50 rounded-lg flex items-center justify-center mb-4 group-hover:bg-crowdarGreen group-hover:text-darkBg transition">
                         <i class="fas fa-sync-alt text-xl"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-2">Responsabilidad</h3>
                     <p class="text-gray-400">Comprender el circuito C-E-A-R y distinguir entre patrones funcionales y disfuncionales.</p>
                 </div>
-                <div class="p-8 rounded-2xl bg-slate-800 border border-slate-700 hover:border-crowdarGreen transition group">
+                <div class="objetivo-card p-8 rounded-2xl bg-slate-800 border border-slate-700 hover:border-crowdarGreen transition group">
                     <div class="w-12 h-12 bg-crowdarBlue/50 rounded-lg flex items-center justify-center mb-4 group-hover:bg-crowdarGreen group-hover:text-darkBg transition">
                         <i class="fas fa-chart-line text-xl"></i>
                     </div>
@@ -626,13 +636,13 @@
         </div>
         
         <div class="max-w-4xl mx-auto px-4 relative z-10">
-            <div class="mb-10 text-center">
+            <div class="mb-10 text-center cear-header">
                 <span class="bg-crowdarBlue text-white text-xs font-bold px-3 py-1 rounded-full">EJERCICIO INTERACTIVO</span>
                 <h2 class="text-3xl font-bold text-white mt-4">Simulador del Circuito C-E-A-R</h2>
                 <p class="text-gray-400 mt-2">Prueba cómo una Creencia afecta tus Resultados.</p>
             </div>
 
-            <div class="glass-effect rounded-2xl p-8 md:p-12 border-l-4 border-crowdarGreen shadow-2xl">
+            <div class="cear-box glass-effect rounded-2xl p-8 md:p-12 border-l-4 border-crowdarGreen shadow-2xl">
                 <div class="max-w-3xl mx-auto">
                     <div class="grid md:grid-cols-2 gap-10 items-center">
                         
@@ -688,11 +698,11 @@
 
     <section id="temario" class="py-20 bg-slate-900">
         <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-white text-center mb-12">Contenidos Clave (Encuentro 2)</h2>
+            <h2 class="temario-header text-3xl font-bold text-white text-center mb-12">Contenidos Clave (Encuentro 2)</h2>
             
             <div class="space-y-6">
                 <!-- 1. Niveles de Conciencia -->
-                <details class="group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue">
+                <details class="temario-item group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue">
                     <summary class="flex justify-between items-center cursor-pointer p-6 font-medium text-white">
                         <span>🧠 1. Niveles de Conciencia y Programación Mental</span>
                         <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down"></i></span>
@@ -722,7 +732,7 @@
                 </details>
 
                 <!-- 2. Creencias -->
-                <details class="group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue">
+                <details class="temario-item group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue">
                     <summary class="flex justify-between items-center cursor-pointer p-6 font-medium text-white">
                         <span>💭 2. Creencias en el Contexto Organizacional</span>
                         <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down"></i></span>
@@ -758,7 +768,7 @@
                 </details>
 
                 <!-- 3. Circuito C-E-A-R -->
-                <details class="group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue">
+                <details class="temario-item group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue">
                     <summary class="flex justify-between items-center cursor-pointer p-6 font-medium text-white">
                         <span>🔄 3. Circuito C-E-A-R y Validación</span>
                         <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down"></i></span>
@@ -822,7 +832,7 @@
                 </details>
 
                 <!-- 4. Juicios y Ley del Espejo -->
-                <details class="group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue">
+                <details class="temario-item group bg-slate-800 rounded-lg open:ring-2 open:ring-crowdarBlue">
                     <summary class="flex justify-between items-center cursor-pointer p-6 font-medium text-white">
                         <span>🔍 4. Juicios y Ley del Espejo</span>
                         <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down"></i></span>
@@ -855,7 +865,7 @@
         </div>
     </section>
 
-    <footer id="contacto" class="bg-darkBg border-t border-slate-800 pt-20 pb-10">
+    <footer id="contacto" class="footer-block bg-darkBg border-t border-slate-800 pt-20 pb-10">
         <div class="max-w-4xl mx-auto px-4 text-center">
             <i class="fas fa-quote-left text-4xl text-crowdarGreen/30 mb-6"></i>
             <blockquote class="text-2xl md:text-3xl font-light text-white mb-8 italic">
@@ -926,7 +936,10 @@
                 if (btnLoginMobile) { btnLoginMobile.classList.remove('hidden'); btnLoginMobile.classList.add('flex'); }
                 if (userBadge) { userBadge.classList.add('hidden'); userBadge.classList.remove('flex'); }
                 if (userBadgeMobile) { userBadgeMobile.classList.add('hidden'); }
-                if (banner) banner.classList.remove('hidden');
+                if (banner) {
+                    banner.classList.remove('hidden');
+                    setTimeout(function() { if (window.animateBannerLogin) window.animateBannerLogin(); }, 50);
+                }
             }
         }
 
@@ -976,6 +989,107 @@
                 onAuthStateChanged(null);
             }
             document.getElementById('btnGoogleLogin')?.addEventListener('click', loginGoogle);
+
+            // ========== Anime.js: animaciones ==========
+            if (typeof anime !== 'undefined') {
+                var ioOpts = { threshold: 0.15, rootMargin: '0px 0px -50px 0px' };
+
+                // Hero al cargar
+                anime.timeline({ easing: 'easeOutExpo' })
+                    .add({ targets: '.nav-logo', opacity: [0, 1], translateY: [-8, 0], duration: 600 })
+                    .add({ targets: '.hero-subtitle', opacity: [0, 1], translateY: [24, 0], duration: 700 }, '-=400')
+                    .add({ targets: '.hero-title', opacity: [0, 1], translateY: [32, 0], duration: 800 }, '-=400')
+                    .add({ targets: '.hero-desc', opacity: [0, 1], translateY: [20, 0], duration: 700 }, '-=500')
+                    .add({ targets: '.hero-btns', opacity: [0, 1], translateY: [20, 0], duration: 600 }, '-=400');
+
+                // Secciones al scroll (headers + cear-box + footer)
+                function animateIn(el, delay) {
+                    if (!el || !el.getAttribute) return;
+                    if (el._animeDone) return;
+                    el._animeDone = true;
+                    anime({ targets: el, opacity: 1, translateY: 0, duration: 700, delay: delay || 0, easing: 'easeOutExpo' });
+                }
+                var observerSection = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (!entry.isIntersecting) return;
+                        animateIn(entry.target);
+                    });
+                }, ioOpts);
+                ['.encuentro1-header', '.encuentro2-header', '.programa-header', '.cear-header', '.cear-box', '.temario-header', '.footer-block'].forEach(function(sel) {
+                    var el = document.querySelector(sel);
+                    if (el) observerSection.observe(el);
+                });
+
+                // Cards "Objetivos" al entrar en viewport
+                var observerCards = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (!entry.isIntersecting) return;
+                        anime({ targets: entry.target, opacity: 1, translateY: 0, duration: 700, easing: 'easeOutExpo' });
+                        observerCards.unobserve(entry.target);
+                    });
+                }, ioOpts);
+                document.querySelectorAll('.objetivo-card').forEach(function(el) { observerCards.observe(el); });
+
+                // Details Encuentro 1: entrada escalonada al scroll
+                var detailsE1 = document.querySelectorAll('.encuentro1-detail');
+                var observerDetails = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (!entry.isIntersecting) return;
+                        var el = entry.target;
+                        if (el._animeDone) return;
+                        el._animeDone = true;
+                        var i = Array.prototype.indexOf.call(detailsE1, el);
+                        anime({ targets: el, opacity: 1, translateY: 0, duration: 500, delay: Math.min(i * 40, 200), easing: 'easeOutExpo' });
+                        observerDetails.unobserve(el);
+                    });
+                }, ioOpts);
+                detailsE1.forEach(function(el) { observerDetails.observe(el); });
+
+                // Temario items (Encuentro 2) al scroll
+                var temarioItems = document.querySelectorAll('.temario-item');
+                var observerTemario = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (!entry.isIntersecting) return;
+                        var el = entry.target;
+                        if (el._animeDone) return;
+                        el._animeDone = true;
+                        var i = Array.prototype.indexOf.call(temarioItems, el);
+                        anime({ targets: el, opacity: 1, translateY: 0, duration: 550, delay: Math.min(i * 60, 240), easing: 'easeOutExpo' });
+                        observerTemario.unobserve(el);
+                    });
+                }, ioOpts);
+                temarioItems.forEach(function(el) { observerTemario.observe(el); });
+
+                // Al abrir un details: animar el contenido interior
+                document.querySelectorAll('details').forEach(function(det) {
+                    det.addEventListener('toggle', function() {
+                        if (!det.open || typeof anime === 'undefined') return;
+                        var inner = det.querySelector('summary + div');
+                        if (!inner) return;
+                        inner.style.opacity = '0';
+                        inner.style.transform = 'translateY(8px)';
+                        anime({ targets: inner, opacity: 1, translateY: 0, duration: 400, easing: 'easeOutExpo' });
+                    });
+                });
+            }
+
+            // Helper: animar caja de resultado al mostrarla
+            window.animateResultBox = function(box) {
+                if (!box || typeof anime === 'undefined') return;
+                box.style.opacity = '0';
+                box.style.transform = 'translateY(10px)';
+                anime({ targets: box, opacity: 1, translateY: 0, duration: 450, easing: 'easeOutExpo' });
+            };
+
+            // Animación del banner de login cuando se muestra (se llama desde onAuthStateChanged)
+            window.animateBannerLogin = function() {
+                var banner = document.getElementById('bannerLogin');
+                if (!banner || typeof anime === 'undefined') return;
+                if (banner.classList.contains('hidden')) return;
+                banner.style.opacity = '0';
+                banner.style.transform = 'translateY(24px)';
+                anime({ targets: banner, opacity: 1, translateY: 0, duration: 500, easing: 'easeOutExpo' });
+            };
             document.getElementById('btnGoogleLoginMobile')?.addEventListener('click', loginGoogle);
             document.getElementById('btnLogout')?.addEventListener('click', logout);
             document.getElementById('btnLogoutMobile')?.addEventListener('click', logout);
@@ -1106,6 +1220,11 @@
                 <p class="text-gray-300 text-sm">${r.texto}</p>
             `;
             resultDiv.classList.remove('hidden');
+            if (typeof anime !== 'undefined') {
+                resultDiv.style.opacity = '0';
+                resultDiv.style.transform = 'translateY(12px)';
+                anime({ targets: resultDiv, opacity: 1, translateY: 0, duration: 500, easing: 'easeOutExpo' });
+            }
             resultDiv.classList.add('animate-pulse');
             setTimeout(function() { resultDiv.classList.remove('animate-pulse'); }, 500);
             // Persistencia segura: si el usuario inició sesión con Google, guardar en Firestore para dataset del bot
@@ -1146,16 +1265,16 @@
                 };
             }
 
-            // Animation effect
+            // Mostrar y animar caja de resultado
             resultBox.classList.remove('hidden');
-            resultBox.classList.add('animate-pulse');
-            setTimeout(() => {
-                resultBox.classList.remove('animate-pulse');
-            }, 500);
-
             emotionEl.textContent = data.emotion;
             actionEl.textContent = data.action;
             resultEl.textContent = data.result;
+            if (typeof anime !== 'undefined') {
+                resultBox.style.opacity = '0';
+                resultBox.style.transform = 'scale(0.96) translateY(8px)';
+                anime({ targets: resultBox, opacity: 1, scale: 1, translateY: 0, duration: 600, easing: 'easeOutElastic(1, 0.6)' });
+            }
         }
 
         function analizarAutomatismo() {
@@ -1183,6 +1302,7 @@
             `;
             
             resultBox.classList.remove('hidden');
+            if (window.animateResultBox) window.animateResultBox(resultBox);
             resultBox.classList.add('animate-pulse');
             setTimeout(() => resultBox.classList.remove('animate-pulse'), 500);
         }
@@ -1226,6 +1346,7 @@
             }
             
             resultBox.classList.remove('hidden');
+            if (window.animateResultBox) window.animateResultBox(resultBox);
             resultBox.classList.add('animate-pulse');
             setTimeout(() => resultBox.classList.remove('animate-pulse'), 500);
         }
@@ -1248,6 +1369,7 @@
             
             const visBox = document.getElementById('circuitVisualization');
             visBox.classList.remove('hidden');
+            if (window.animateResultBox) window.animateResultBox(visBox);
             visBox.classList.add('animate-pulse');
             setTimeout(() => visBox.classList.remove('animate-pulse'), 500);
         }
@@ -1273,6 +1395,7 @@
             preguntasEl.innerHTML = preguntas.map(p => `<li>${p}</li>`).join('');
             
             resultBox.classList.remove('hidden');
+            if (window.animateResultBox) window.animateResultBox(resultBox);
             resultBox.classList.add('animate-pulse');
             setTimeout(() => resultBox.classList.remove('animate-pulse'), 500);
         }
