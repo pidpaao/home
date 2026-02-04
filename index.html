@@ -614,15 +614,15 @@
                             <button type="button" onclick="responderCheckpoint(19)" class="checkpoint-submit-btn w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
                             <div id="checkpoint_result_19" class="hidden mt-4 p-4 rounded-xl border border-crowdarGreen/40 bg-slate-900/80 space-y-2"></div>
                             <div id="invitacion_bot_form" class="hidden mt-5 p-5 rounded-xl border border-crowdarGreen/50 bg-slate-800/80 space-y-4">
-                                <p class="text-crowdarGreen font-semibold text-sm flex items-center gap-2"><i class="fab fa-telegram-plane"></i> Invitación al bot de coaching</p>
-                                <p class="text-gray-400 text-sm">Dejá tu nombre y email para guardar el progreso y abrir el bot <strong>@couchQA_bot</strong> en Telegram. Así podés seguir el proceso desde el celular.</p>
+                                <p class="text-crowdarGreen font-semibold text-sm flex items-center gap-2"><i class="fab fa-telegram-plane"></i> Solicitud de acceso al bot de coaching</p>
+                                <p class="text-gray-400 text-sm">Dejá tu nombre y email para guardar el progreso. Luego completá el formulario de solicitud de permiso para acceder al bot <strong>@couchQA_bot</strong> en Telegram.</p>
                                 <div class="grid gap-3">
                                     <label class="block text-sm text-gray-300">Nombre</label>
                                     <input type="text" id="invitacion_nombre" placeholder="Tu nombre" class="w-full bg-slate-900 border border-slate-600 rounded-lg px-3 py-2 text-white placeholder-gray-500 focus:ring-2 focus:ring-crowdarGreen outline-none">
                                     <label class="block text-sm text-gray-300">Email</label>
                                     <input type="email" id="invitacion_email" placeholder="tu@email.com" class="w-full bg-slate-900 border border-slate-600 rounded-lg px-3 py-2 text-white placeholder-gray-500 focus:ring-2 focus:ring-crowdarGreen outline-none">
                                 </div>
-                                <button type="button" id="btn_invitacion_bot" class="w-full bg-crowdarGreen text-darkBg font-semibold py-2.5 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fab fa-telegram-plane"></i> Guardar y abrir @couchQA_bot en Telegram</button>
+                                <button type="button" id="btn_invitacion_bot" class="w-full bg-crowdarGreen text-darkBg font-semibold py-2.5 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fab fa-telegram-plane"></i> Guardar y solicitar acceso al bot (formulario)</button>
                             </div>
                         </div>
                         </div>
@@ -1112,16 +1112,13 @@
                             return syncParticipantCheckpointsToBot(window.currentUser.uid, nombre || 'Participante', email);
                         }
                     }).then(function() {
-                        var startParam = 'ref_' + btoa(encodeURIComponent(email));
-                        window.open('https://t.me/couchQA_bot?start=' + startParam, '_blank', 'noopener');
+                        window.open('https://forms.gle/Pb7LAkSTxa8CmafT6', '_blank', 'noopener');
                     }).catch(function(err) {
                         console.warn('Error guardando invitación o sync checkpoints:', err);
-                        var startParam = 'ref_' + btoa(encodeURIComponent(email));
-                        window.open('https://t.me/couchQA_bot?start=' + startParam, '_blank', 'noopener');
+                        window.open('https://forms.gle/Pb7LAkSTxa8CmafT6', '_blank', 'noopener');
                     });
                 } else {
-                    var startParam = 'ref_' + btoa(encodeURIComponent(email));
-                    window.open('https://t.me/couchQA_bot?start=' + startParam, '_blank', 'noopener');
+                    window.open('https://forms.gle/Pb7LAkSTxa8CmafT6', '_blank', 'noopener');
                 }
             });
 
@@ -1479,7 +1476,7 @@
             if (window.currentUser && typeof persistCheckpoint === 'function') {
                 persistCheckpoint(window.currentUser.uid, window.currentUser.email || '', num, value, r.titulo, r.texto);
             }
-            // Tras el checkpoint 19: mostrar formulario Nombre + Email para invitación al bot @couchQA_bot
+            // Tras el checkpoint 19: mostrar formulario Nombre + Email y enlace al form de solicitud de acceso al bot
             if (num === 19 && typeof showInvitacionBotForm === 'function') {
                 showInvitacionBotForm();
             }
