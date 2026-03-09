@@ -60,7 +60,6 @@
         .encuentro1-timeline-nav button.encuentro1-arrow--bounce { animation: encuentro1-bounce-scale 0.5s ease-out forwards; }
         .checkpoint-option.checkpoint-option--bounce { animation: encuentro1-bounce-scale 0.5s ease-out forwards; }
         .checkpoint-submit-btn.checkpoint-submit-btn--bounce { animation: encuentro1-bounce-scale 0.5s ease-out forwards; }
-        .creencia-select.creencia-select--bounce { animation: encuentro1-bounce-scale 0.5s ease-out forwards; }
         .encuentro1-content { flex: 1 1 0%; min-width: 0; display: flex; flex-direction: column; }
         .encuentro1-content-box { background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(71, 85, 105, 0.5); border-radius: 0.75rem; padding: 1.25rem; min-height: 200px; flex: 1; }
         .encuentro1-step { display: none; }
@@ -652,29 +651,29 @@
                     <p class="text-gray-300 text-sm mb-4">Objetivo: ampliar la conciencia sobre creencias, emociones y acciones. La pregunta central es:</p>
                     <p class="text-white font-medium mb-6">¿Para qué estoy en esta organización?</p>
 
-                    <div class="glass-effect rounded-xl p-5 md:p-6 border border-slate-600/80 bg-slate-800/40">
-                        <p class="text-crowdarGreen font-semibold text-sm mb-2 flex items-center gap-2"><i class="fas fa-check-circle"></i> Checkpoint – Reflexión por respuesta</p>
-                        <p class="text-gray-400 text-sm mb-4">Elegí la opción que más se acerque a cómo te sentís hoy (no describe personas, sino momentos o niveles de conciencia):</p>
-                        <div class="space-y-2 mb-5">
-                            <label class="flex items-start gap-3 p-3.5 rounded-xl bg-slate-800/50 border border-slate-600/50 hover:border-crowdarGreen/40 hover:bg-slate-700/40 cursor-pointer transition-all duration-200 checkpoint-option">
+                    <div class="glass-effect rounded-xl p-5 border border-crowdarGreen/30">
+                        <p class="text-crowdarGreen font-semibold text-sm mb-3 flex items-center gap-2"><i class="fas fa-check-circle"></i> Checkpoint – Reflexión por respuesta</p>
+                        <p class="text-gray-300 text-sm mb-4">Elegí la opción que más se acerque a cómo te sentís hoy (no describe personas, sino momentos o niveles de conciencia):</p>
+                        <div class="space-y-2 mb-4">
+                            <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition checkpoint-option">
                                 <input type="radio" name="check_proposito_org" value="1" class="mt-1 text-crowdarGreen">
                                 <span class="text-sm text-gray-300">1) Porque sí.</span>
                             </label>
-                            <label class="flex items-start gap-3 p-3.5 rounded-xl bg-slate-800/50 border border-slate-600/50 hover:border-crowdarGreen/40 hover:bg-slate-700/40 cursor-pointer transition-all duration-200 checkpoint-option">
+                            <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition checkpoint-option">
                                 <input type="radio" name="check_proposito_org" value="2" class="mt-1 text-crowdarGreen">
                                 <span class="text-sm text-gray-300">2) Porque hago como si estuviera.</span>
                             </label>
-                            <label class="flex items-start gap-3 p-3.5 rounded-xl bg-slate-800/50 border border-slate-600/50 hover:border-crowdarGreen/40 hover:bg-slate-700/40 cursor-pointer transition-all duration-200 checkpoint-option">
+                            <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition checkpoint-option">
                                 <input type="radio" name="check_proposito_org" value="3" class="mt-1 text-crowdarGreen">
                                 <span class="text-sm text-gray-300">3) Para no dejar de tener trabajo.</span>
                             </label>
-                            <label class="flex items-start gap-3 p-3.5 rounded-xl bg-slate-800/50 border border-slate-600/50 hover:border-crowdarGreen/40 hover:bg-slate-700/40 cursor-pointer transition-all duration-200 checkpoint-option">
+                            <label class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-600 hover:border-crowdarGreen/50 cursor-pointer transition checkpoint-option">
                                 <input type="radio" name="check_proposito_org" value="4" class="mt-1 text-crowdarGreen">
                                 <span class="text-sm text-gray-300">4) Para ganar.</span>
                             </label>
                         </div>
-                        <button type="button" onclick="responderPropositoOrganizacion()" class="w-full bg-crowdarGreen/90 text-darkBg font-semibold py-2.5 rounded-xl hover:bg-crowdarGreen transition flex items-center justify-center gap-2 checkpoint-submit-btn"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
-                        <div id="proposito_result" class="hidden mt-4 p-4 rounded-xl border border-slate-600/60 bg-slate-800/60 space-y-3"></div>
+                        <button type="button" onclick="responderPropositoOrganizacion()" class="w-full bg-crowdarGreen text-darkBg font-semibold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2 checkpoint-submit-btn"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
+                        <div id="proposito_result" class="hidden mt-4 p-4 rounded-xl border border-crowdarGreen/40 bg-slate-900/80 space-y-3"></div>
                     </div>
                 </div>
 
@@ -699,13 +698,13 @@
                     <p class="text-gray-300 text-sm mb-4"><strong class="text-gray-200">Validación y construcción de significado:</strong> el significado se construye por <em>Enseñanza</em> (lo aprendido de figuras de autoridad y cultura), <em>Evidencia</em> (resultados repetidos que «prueban» que las cosas son así) e <em>Impacto emocional</em> (experiencias que fijan creencias y condicionan cómo interpretamos después).</p>
                     <p class="text-gray-300 text-sm mb-6">En las organizaciones no actuamos sobre la realidad, sino sobre la interpretación que hacemos de ella. Identificar el origen de nuestras creencias es un paso fundamental para ampliar la conciencia y construir resultados más alineados.</p>
 
-                    <div class="glass-effect rounded-xl p-5 md:p-6 border border-slate-600/80 bg-slate-800/40">
-                        <h4 class="text-crowdarGreen font-bold mb-2 flex items-center gap-2"><i class="fas fa-list-check"></i> Dinámica de creencias</h4>
-                        <p class="text-gray-400 text-sm mb-4">Elegí 2 creencias de cada categoría que sientas propias. Identificá: ¿cuál te impulsa? ¿cuál te limita? Reformulá una creencia limitante en versión potenciadora (ej: «Si descanso, me atraso» → «Descansar mejora mi rendimiento»).</p>
+                    <div class="glass-effect rounded-xl p-5 border border-crowdarGreen/30">
+                        <h4 class="text-crowdarGreen font-bold mb-4 flex items-center gap-2"><i class="fas fa-list-check"></i> Dinámica de creencias</h4>
+                        <p class="text-gray-300 text-sm mb-4">Elegí 2 creencias de cada categoría que sientas propias. Identificá: ¿cuál te impulsa? ¿cuál te limita? Reformulá una creencia limitante en versión potenciadora (ej: «Si descanso, me atraso» → «Descansar mejora mi rendimiento»).</p>
                         <div class="grid md:grid-cols-3 gap-4 mb-4">
                             <div>
                                 <label class="block text-xs font-medium text-gray-400 mb-2">Creencias sociales (2)</label>
-                                <select id="creenciaSocial1" class="creencia-select w-full bg-slate-900 border border-slate-600 rounded-lg p-2 text-white text-sm focus:ring-2 focus:ring-crowdarGreen outline-none mb-2 transition-all">
+                                <select id="creenciaSocial1" class="w-full bg-slate-900 border border-slate-600 rounded-lg p-2 text-white text-sm focus:ring-2 focus:ring-crowdarGreen outline-none mb-2">
                                     <option value="">— Elegir —</option>
                                     <option value="Si no estoy ocupado todo el tiempo, no soy productivo">Si no estoy ocupado todo el tiempo, no soy productivo</option>
                                     <option value="El que más trabaja horas es el que más vale">El que más trabaja horas es el que más vale</option>
@@ -716,7 +715,7 @@
                                     <option value="Siempre hay que decir que sí para crecer">Siempre hay que decir que sí para crecer</option>
                                     <option value="Descansar es perder el tiempo">Descansar es perder el tiempo</option>
                                 </select>
-                                <select id="creenciaSocial2" class="creencia-select w-full bg-slate-900 border border-slate-600 rounded-lg p-2 text-white text-sm focus:ring-2 focus:ring-crowdarGreen outline-none transition-all">
+                                <select id="creenciaSocial2" class="w-full bg-slate-900 border border-slate-600 rounded-lg p-2 text-white text-sm focus:ring-2 focus:ring-crowdarGreen outline-none">
                                     <option value="">— Elegir —</option>
                                     <option value="Si no estoy ocupado todo el tiempo, no soy productivo">Si no estoy ocupado todo el tiempo, no soy productivo</option>
                                     <option value="El que más trabaja horas es el que más vale">El que más trabaja horas es el que más vale</option>
@@ -730,7 +729,7 @@
                             </div>
                             <div>
                                 <label class="block text-xs font-medium text-gray-400 mb-2">Creencias familiares (2)</label>
-                                <select id="creenciaFamiliar1" class="creencia-select w-full bg-slate-900 border border-slate-600 rounded-lg p-2 text-white text-sm focus:ring-2 focus:ring-crowdarGreen outline-none mb-2 transition-all">
+                                <select id="creenciaFamiliar1" class="w-full bg-slate-900 border border-slate-600 rounded-lg p-2 text-white text-sm focus:ring-2 focus:ring-crowdarGreen outline-none mb-2">
                                     <option value="">— Elegir —</option>
                                     <option value="Primero el trabajo, después todo lo demás">Primero el trabajo, después todo lo demás</option>
                                     <option value="No se habla de los problemas">No se habla de los problemas</option>
@@ -741,7 +740,7 @@
                                     <option value="Los hombres/mujeres deben ser de determinada manera">Los hombres/mujeres deben ser de determinada manera</option>
                                     <option value="Pedir ayuda es señal de debilidad">Pedir ayuda es señal de debilidad</option>
                                 </select>
-                                <select id="creenciaFamiliar2" class="creencia-select w-full bg-slate-900 border border-slate-600 rounded-lg p-2 text-white text-sm focus:ring-2 focus:ring-crowdarGreen outline-none transition-all">
+                                <select id="creenciaFamiliar2" class="w-full bg-slate-900 border border-slate-600 rounded-lg p-2 text-white text-sm focus:ring-2 focus:ring-crowdarGreen outline-none">
                                     <option value="">— Elegir —</option>
                                     <option value="Primero el trabajo, después todo lo demás">Primero el trabajo, después todo lo demás</option>
                                     <option value="No se habla de los problemas">No se habla de los problemas</option>
@@ -755,7 +754,7 @@
                             </div>
                             <div>
                                 <label class="block text-xs font-medium text-gray-400 mb-2">Creencias propias (2)</label>
-                                <select id="creenciaPropia1" class="creencia-select w-full bg-slate-900 border border-slate-600 rounded-lg p-2 text-white text-sm focus:ring-2 focus:ring-crowdarGreen outline-none mb-2 transition-all">
+                                <select id="creenciaPropia1" class="w-full bg-slate-900 border border-slate-600 rounded-lg p-2 text-white text-sm focus:ring-2 focus:ring-crowdarGreen outline-none mb-2">
                                     <option value="">— Elegir —</option>
                                     <option value="No soy lo suficientemente bueno">No soy lo suficientemente bueno</option>
                                     <option value="Siempre tengo que demostrar más que los demás">Siempre tengo que demostrar más que los demás</option>
@@ -766,7 +765,7 @@
                                     <option value="No soy creativo">No soy creativo</option>
                                     <option value="Cuando me equivoco, decepciono">Cuando me equivoco, decepciono</option>
                                 </select>
-                                <select id="creenciaPropia2" class="creencia-select w-full bg-slate-900 border border-slate-600 rounded-lg p-2 text-white text-sm focus:ring-2 focus:ring-crowdarGreen outline-none transition-all">
+                                <select id="creenciaPropia2" class="w-full bg-slate-900 border border-slate-600 rounded-lg p-2 text-white text-sm focus:ring-2 focus:ring-crowdarGreen outline-none">
                                     <option value="">— Elegir —</option>
                                     <option value="No soy lo suficientemente bueno">No soy lo suficientemente bueno</option>
                                     <option value="Siempre tengo que demostrar más que los demás">Siempre tengo que demostrar más que los demás</option>
@@ -779,12 +778,12 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="mb-5">
+                        <div class="mb-4">
                             <label class="block text-xs font-medium text-gray-400 mb-2">Reformulá una creencia limitante en versión potenciadora</label>
-                            <input type="text" id="reformulacionCreencia" class="w-full bg-slate-900/80 border border-slate-600/80 rounded-xl p-3 text-white text-sm focus:ring-2 focus:ring-crowdarGreen outline-none transition-all" placeholder="Ej: Descansar mejora mi rendimiento">
+                            <input type="text" id="reformulacionCreencia" class="w-full bg-slate-900 border border-slate-600 rounded-lg p-3 text-white text-sm focus:ring-2 focus:ring-crowdarGreen outline-none" placeholder="Ej: Descansar mejora mi rendimiento">
                         </div>
-                        <button type="button" onclick="enviarDinamicaCreencias()" class="w-full bg-crowdarGreen/90 text-darkBg font-semibold py-2.5 rounded-xl hover:bg-crowdarGreen transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Enviar dinámica</button>
-                        <div id="dinamicaCreenciasResult" class="hidden mt-4 p-4 rounded-xl border border-slate-600/60 bg-slate-800/60 space-y-2 text-sm text-gray-300"></div>
+                        <button type="button" onclick="enviarDinamicaCreencias()" class="w-full bg-crowdarGreen text-darkBg font-bold py-2 rounded-lg hover:bg-white transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Enviar dinámica</button>
+                        <div id="dinamicaCreenciasResult" class="hidden mt-4 p-4 rounded-xl border border-crowdarGreen/40 bg-slate-900/80 space-y-2 text-sm text-gray-300"></div>
                     </div>
                 </div>
             </div>
@@ -1415,21 +1414,6 @@
                     });
                     document.querySelectorAll('.checkpoint-submit-btn').forEach(function(btn) {
                         btn.addEventListener('click', function() { triggerBounceCheckpoint(btn, 'checkpoint-submit-btn--bounce'); });
-                    });
-                })();
-
-                // Rebote en dropdowns de Dinámica de creencias (mismo efecto que Checkpoint)
-                (function() {
-                    function triggerBounceCreencia(el, bounceClass) {
-                        if (!el) return;
-                        el.classList.remove(bounceClass);
-                        el.offsetHeight;
-                        el.classList.add(bounceClass);
-                        var onEnd = function() { el.classList.remove(bounceClass); el.removeEventListener('animationend', onEnd); };
-                        el.addEventListener('animationend', onEnd);
-                    }
-                    document.querySelectorAll('.creencia-select').forEach(function(sel) {
-                        sel.addEventListener('change', function() { triggerBounceCreencia(sel, 'creencia-select--bounce'); });
                     });
                 })();
 
