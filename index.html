@@ -60,6 +60,7 @@
         .encuentro1-timeline-nav button.encuentro1-arrow--bounce { animation: encuentro1-bounce-scale 0.5s ease-out forwards; }
         .checkpoint-option.checkpoint-option--bounce { animation: encuentro1-bounce-scale 0.5s ease-out forwards; }
         .checkpoint-submit-btn.checkpoint-submit-btn--bounce { animation: encuentro1-bounce-scale 0.5s ease-out forwards; }
+        .creencia-select.creencia-select--bounce { animation: encuentro1-bounce-scale 0.5s ease-out forwards; }
         .encuentro1-content { flex: 1 1 0%; min-width: 0; display: flex; flex-direction: column; }
         .encuentro1-content-box { background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(71, 85, 105, 0.5); border-radius: 0.75rem; padding: 1.25rem; min-height: 200px; flex: 1; }
         .encuentro1-step { display: none; }
@@ -643,6 +644,150 @@
                     Profundización en mecanismos de programación mental, circuito Creencias–Emociones–Acciones–Resultados e intervención responsable en juicios y clima laboral.
                 </p>
             </div>
+
+            <!-- Marco teórico: Topic 1 - Propósito -->
+            <div class="max-w-4xl mx-auto mb-16">
+                <div class="bg-slate-800/80 rounded-xl border border-slate-600 p-6 md:p-8 mb-8">
+                    <h3 class="text-xl font-bold text-crowdarGreen mb-3 flex items-center gap-2"><i class="fas fa-bullseye"></i> Topic 1 – Propósito</h3>
+                    <p class="text-gray-300 text-sm mb-4">Objetivo: ampliar la conciencia sobre creencias, emociones y acciones. La pregunta central es:</p>
+                    <p class="text-white font-medium mb-6">¿Para qué estoy en esta organización?</p>
+
+                    <div class="glass-effect rounded-xl p-5 md:p-6 border border-slate-600/80 bg-slate-800/40">
+                        <p class="text-crowdarGreen font-semibold text-sm mb-2 flex items-center gap-2"><i class="fas fa-check-circle"></i> Checkpoint – Reflexión por respuesta</p>
+                        <p class="text-gray-400 text-sm mb-4">Elegí la opción que más se acerque a cómo te sentís hoy (no describe personas, sino momentos o niveles de conciencia):</p>
+                        <div class="space-y-2 mb-5">
+                            <label class="flex items-start gap-3 p-3.5 rounded-xl bg-slate-800/50 border border-slate-600/50 hover:border-crowdarGreen/40 hover:bg-slate-700/40 cursor-pointer transition-all duration-200 checkpoint-option">
+                                <input type="radio" name="check_proposito_org" value="1" class="mt-1 text-crowdarGreen">
+                                <span class="text-sm text-gray-300">1) Porque sí.</span>
+                            </label>
+                            <label class="flex items-start gap-3 p-3.5 rounded-xl bg-slate-800/50 border border-slate-600/50 hover:border-crowdarGreen/40 hover:bg-slate-700/40 cursor-pointer transition-all duration-200 checkpoint-option">
+                                <input type="radio" name="check_proposito_org" value="2" class="mt-1 text-crowdarGreen">
+                                <span class="text-sm text-gray-300">2) Porque hago como si estuviera.</span>
+                            </label>
+                            <label class="flex items-start gap-3 p-3.5 rounded-xl bg-slate-800/50 border border-slate-600/50 hover:border-crowdarGreen/40 hover:bg-slate-700/40 cursor-pointer transition-all duration-200 checkpoint-option">
+                                <input type="radio" name="check_proposito_org" value="3" class="mt-1 text-crowdarGreen">
+                                <span class="text-sm text-gray-300">3) Para no dejar de tener trabajo.</span>
+                            </label>
+                            <label class="flex items-start gap-3 p-3.5 rounded-xl bg-slate-800/50 border border-slate-600/50 hover:border-crowdarGreen/40 hover:bg-slate-700/40 cursor-pointer transition-all duration-200 checkpoint-option">
+                                <input type="radio" name="check_proposito_org" value="4" class="mt-1 text-crowdarGreen">
+                                <span class="text-sm text-gray-300">4) Para ganar.</span>
+                            </label>
+                        </div>
+                        <button type="button" onclick="responderPropositoOrganizacion()" class="w-full bg-crowdarGreen/90 text-darkBg font-semibold py-2.5 rounded-xl hover:bg-crowdarGreen transition flex items-center justify-center gap-2 checkpoint-submit-btn"><i class="fas fa-paper-plane"></i> Registrar y ver reflexión</button>
+                        <div id="proposito_result" class="hidden mt-4 p-4 rounded-xl border border-slate-600/60 bg-slate-800/60 space-y-3"></div>
+                    </div>
+                </div>
+
+                <!-- Marco teórico: Zona de confort -->
+                <div class="bg-slate-800/80 rounded-xl border border-slate-600 p-6 md:p-8 mb-8">
+                    <h3 class="text-xl font-bold text-crowdarGreen mb-3 flex items-center gap-2"><i class="fas fa-couch"></i> Zona de confort</h3>
+                    <p class="text-gray-300 text-sm mb-4">Cambia la manera de observar, cambia el mundo interpretativo. Identificá y reconocé:</p>
+                    <p class="text-white font-medium mb-4">¿De qué está conformada tu zona de confort?</p>
+                    <div class="glass-effect rounded-xl p-5 border border-crowdarGreen/30">
+                        <textarea id="zonaConfortInput" rows="3" class="w-full bg-slate-900 border border-slate-600 rounded-lg p-3 text-white text-sm focus:ring-2 focus:ring-crowdarGreen outline-none mb-4" placeholder="Ej: Rutinas, hábitos que me dan seguridad, evitar ciertas conversaciones..."></textarea>
+                        <button type="button" onclick="reflexionarZonaConfort()" class="w-full bg-crowdarBlue text-white font-semibold py-2 rounded-lg hover:bg-crowdarBlue/80 transition flex items-center justify-center gap-2"><i class="fas fa-lightbulb"></i> Reflexionar</button>
+                        <div id="zonaConfortResult" class="hidden mt-4 p-4 rounded-xl border border-crowdarGreen/40 bg-slate-900/80 text-sm text-gray-300"></div>
+                    </div>
+                </div>
+
+                <!-- Marco teórico: Niveles de Conciencia y Creencias -->
+                <div class="bg-slate-800/80 rounded-xl border border-slate-600 p-6 md:p-8">
+                    <h3 class="text-xl font-bold text-crowdarGreen mb-4 flex items-center gap-2"><i class="fas fa-brain"></i> Topic 2 – Niveles de Conciencia y Creencias en las Organizaciones</h3>
+                    <p class="text-gray-300 text-sm mb-4">En esta sesión invitamos a explorar los niveles de conciencia que atravesamos en la vida profesional, para reconocer los patrones mentales y emocionales desde los cuales interpretamos la realidad laboral.</p>
+                    <p class="text-gray-300 text-sm mb-2"><strong class="text-gray-200">Creencias en el contexto organizacional:</strong> son interpretaciones que tomamos como verdaderas y desde las cuales observamos la realidad laboral. Funcionan como certezas internas que dan sentido al día a día.</p>
+                    <p class="text-gray-300 text-sm mb-4"><strong class="text-gray-200">Tipos:</strong> <em>Creencias sociales</em> (acuerdos del grupo: «acá siempre se hizo así»); <em>familiares</em> (normas y mandatos aprendidos: relación con autoridad, esfuerzo, pedir ayuda); <em>propias</em> (construidas desde experiencias: identidad profesional, «no soy bueno para…»).</p>
+                    <p class="text-gray-300 text-sm mb-4"><strong class="text-gray-200">Validación y construcción de significado:</strong> el significado se construye por <em>Enseñanza</em> (lo aprendido de figuras de autoridad y cultura), <em>Evidencia</em> (resultados repetidos que «prueban» que las cosas son así) e <em>Impacto emocional</em> (experiencias que fijan creencias y condicionan cómo interpretamos después).</p>
+                    <p class="text-gray-300 text-sm mb-6">En las organizaciones no actuamos sobre la realidad, sino sobre la interpretación que hacemos de ella. Identificar el origen de nuestras creencias es un paso fundamental para ampliar la conciencia y construir resultados más alineados.</p>
+
+                    <div class="glass-effect rounded-xl p-5 md:p-6 border border-slate-600/80 bg-slate-800/40">
+                        <h4 class="text-crowdarGreen font-bold mb-2 flex items-center gap-2"><i class="fas fa-list-check"></i> Dinámica de creencias</h4>
+                        <p class="text-gray-400 text-sm mb-4">Elegí 2 creencias de cada categoría que sientas propias. Identificá: ¿cuál te impulsa? ¿cuál te limita? Reformulá una creencia limitante en versión potenciadora (ej: «Si descanso, me atraso» → «Descansar mejora mi rendimiento»).</p>
+                        <div class="grid md:grid-cols-3 gap-4 mb-4">
+                            <div>
+                                <label class="block text-xs font-medium text-gray-400 mb-2">Creencias sociales (2)</label>
+                                <select id="creenciaSocial1" class="creencia-select w-full bg-slate-900 border border-slate-600 rounded-lg p-2 text-white text-sm focus:ring-2 focus:ring-crowdarGreen outline-none mb-2 transition-all">
+                                    <option value="">— Elegir —</option>
+                                    <option value="Si no estoy ocupado todo el tiempo, no soy productivo">Si no estoy ocupado todo el tiempo, no soy productivo</option>
+                                    <option value="El que más trabaja horas es el que más vale">El que más trabaja horas es el que más vale</option>
+                                    <option value="Equivocarse es fracasar">Equivocarse es fracasar</option>
+                                    <option value="Hay que adaptarse, aunque no estés de acuerdo">Hay que adaptarse, aunque no estés de acuerdo</option>
+                                    <option value="El éxito se mide por el dinero o el cargo">El éxito se mide por el dinero o el cargo</option>
+                                    <option value="Mostrar emociones en el trabajo es debilidad">Mostrar emociones en el trabajo es debilidad</option>
+                                    <option value="Siempre hay que decir que sí para crecer">Siempre hay que decir que sí para crecer</option>
+                                    <option value="Descansar es perder el tiempo">Descansar es perder el tiempo</option>
+                                </select>
+                                <select id="creenciaSocial2" class="creencia-select w-full bg-slate-900 border border-slate-600 rounded-lg p-2 text-white text-sm focus:ring-2 focus:ring-crowdarGreen outline-none transition-all">
+                                    <option value="">— Elegir —</option>
+                                    <option value="Si no estoy ocupado todo el tiempo, no soy productivo">Si no estoy ocupado todo el tiempo, no soy productivo</option>
+                                    <option value="El que más trabaja horas es el que más vale">El que más trabaja horas es el que más vale</option>
+                                    <option value="Equivocarse es fracasar">Equivocarse es fracasar</option>
+                                    <option value="Hay que adaptarse, aunque no estés de acuerdo">Hay que adaptarse, aunque no estés de acuerdo</option>
+                                    <option value="El éxito se mide por el dinero o el cargo">El éxito se mide por el dinero o el cargo</option>
+                                    <option value="Mostrar emociones en el trabajo es debilidad">Mostrar emociones en el trabajo es debilidad</option>
+                                    <option value="Siempre hay que decir que sí para crecer">Siempre hay que decir que sí para crecer</option>
+                                    <option value="Descansar es perder el tiempo">Descansar es perder el tiempo</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-gray-400 mb-2">Creencias familiares (2)</label>
+                                <select id="creenciaFamiliar1" class="creencia-select w-full bg-slate-900 border border-slate-600 rounded-lg p-2 text-white text-sm focus:ring-2 focus:ring-crowdarGreen outline-none mb-2 transition-all">
+                                    <option value="">— Elegir —</option>
+                                    <option value="Primero el trabajo, después todo lo demás">Primero el trabajo, después todo lo demás</option>
+                                    <option value="No se habla de los problemas">No se habla de los problemas</option>
+                                    <option value="En esta familia nadie abandona">En esta familia nadie abandona</option>
+                                    <option value="Hay que sacrificarse para salir adelante">Hay que sacrificarse para salir adelante</option>
+                                    <option value="Mejor no destacarse demasiado">Mejor no destacarse demasiado</option>
+                                    <option value="El dinero cuesta mucho y se sufre para ganarlo">El dinero cuesta mucho y se sufre para ganarlo</option>
+                                    <option value="Los hombres/mujeres deben ser de determinada manera">Los hombres/mujeres deben ser de determinada manera</option>
+                                    <option value="Pedir ayuda es señal de debilidad">Pedir ayuda es señal de debilidad</option>
+                                </select>
+                                <select id="creenciaFamiliar2" class="creencia-select w-full bg-slate-900 border border-slate-600 rounded-lg p-2 text-white text-sm focus:ring-2 focus:ring-crowdarGreen outline-none transition-all">
+                                    <option value="">— Elegir —</option>
+                                    <option value="Primero el trabajo, después todo lo demás">Primero el trabajo, después todo lo demás</option>
+                                    <option value="No se habla de los problemas">No se habla de los problemas</option>
+                                    <option value="En esta familia nadie abandona">En esta familia nadie abandona</option>
+                                    <option value="Hay que sacrificarse para salir adelante">Hay que sacrificarse para salir adelante</option>
+                                    <option value="Mejor no destacarse demasiado">Mejor no destacarse demasiado</option>
+                                    <option value="El dinero cuesta mucho y se sufre para ganarlo">El dinero cuesta mucho y se sufre para ganarlo</option>
+                                    <option value="Los hombres/mujeres deben ser de determinada manera">Los hombres/mujeres deben ser de determinada manera</option>
+                                    <option value="Pedir ayuda es señal de debilidad">Pedir ayuda es señal de debilidad</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-gray-400 mb-2">Creencias propias (2)</label>
+                                <select id="creenciaPropia1" class="creencia-select w-full bg-slate-900 border border-slate-600 rounded-lg p-2 text-white text-sm focus:ring-2 focus:ring-crowdarGreen outline-none mb-2 transition-all">
+                                    <option value="">— Elegir —</option>
+                                    <option value="No soy lo suficientemente bueno">No soy lo suficientemente bueno</option>
+                                    <option value="Siempre tengo que demostrar más que los demás">Siempre tengo que demostrar más que los demás</option>
+                                    <option value="Si delego, las cosas no salen bien">Si delego, las cosas no salen bien</option>
+                                    <option value="Yo puedo con todo">Yo puedo con todo</option>
+                                    <option value="No soy bueno para liderar">No soy bueno para liderar</option>
+                                    <option value="Si descanso, me atraso">Si descanso, me atraso</option>
+                                    <option value="No soy creativo">No soy creativo</option>
+                                    <option value="Cuando me equivoco, decepciono">Cuando me equivoco, decepciono</option>
+                                </select>
+                                <select id="creenciaPropia2" class="creencia-select w-full bg-slate-900 border border-slate-600 rounded-lg p-2 text-white text-sm focus:ring-2 focus:ring-crowdarGreen outline-none transition-all">
+                                    <option value="">— Elegir —</option>
+                                    <option value="No soy lo suficientemente bueno">No soy lo suficientemente bueno</option>
+                                    <option value="Siempre tengo que demostrar más que los demás">Siempre tengo que demostrar más que los demás</option>
+                                    <option value="Si delego, las cosas no salen bien">Si delego, las cosas no salen bien</option>
+                                    <option value="Yo puedo con todo">Yo puedo con todo</option>
+                                    <option value="No soy bueno para liderar">No soy bueno para liderar</option>
+                                    <option value="Si descanso, me atraso">Si descanso, me atraso</option>
+                                    <option value="No soy creativo">No soy creativo</option>
+                                    <option value="Cuando me equivoco, decepciono">Cuando me equivoco, decepciono</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-5">
+                            <label class="block text-xs font-medium text-gray-400 mb-2">Reformulá una creencia limitante en versión potenciadora</label>
+                            <input type="text" id="reformulacionCreencia" class="w-full bg-slate-900/80 border border-slate-600/80 rounded-xl p-3 text-white text-sm focus:ring-2 focus:ring-crowdarGreen outline-none transition-all" placeholder="Ej: Descansar mejora mi rendimiento">
+                        </div>
+                        <button type="button" onclick="enviarDinamicaCreencias()" class="w-full bg-crowdarGreen/90 text-darkBg font-semibold py-2.5 rounded-xl hover:bg-crowdarGreen transition flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i> Enviar dinámica</button>
+                        <div id="dinamicaCreenciasResult" class="hidden mt-4 p-4 rounded-xl border border-slate-600/60 bg-slate-800/60 space-y-2 text-sm text-gray-300"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -759,6 +904,9 @@
                         <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down"></i></span>
                     </summary>
                     <div class="px-6 pb-6">
+                        <p class="text-gray-400 text-sm mb-4">
+                            En esta sesión invitamos a los participantes a explorar los niveles de conciencia que atravesamos en nuestra vida profesional, con el objetivo de reconocer los patrones mentales y emocionales desde los cuales interpretamos la realidad laboral y tomamos decisiones dentro de la organización.
+                        </p>
                         <p class="text-gray-400 text-sm mb-6">
                             Exploración de cómo se forma la mente profesional, la influencia de la cultura organizacional y los automatismos que condicionan decisiones.
                         </p>
@@ -789,8 +937,17 @@
                         <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down"></i></span>
                     </summary>
                     <div class="px-6 pb-6">
+                        <p class="text-gray-400 text-sm mb-3">
+                            En las organizaciones, las creencias son interpretaciones que una persona toma como verdaderas y desde las cuales observa la realidad laboral. Funcionan como certezas internas que dan sentido al día a día y orientan la forma en que cada uno interpreta hechos, conversaciones, resultados y comportamientos.
+                        </p>
+                        <p class="text-gray-300 text-sm font-medium mb-1">Tipos de creencias:</p>
+                        <ul class="text-gray-400 text-sm list-disc list-inside mb-2 space-y-1">
+                            <li><strong class="text-gray-300">Sociales:</strong> certezas compartidas por el grupo («acá siempre se hizo así», «equivocarse está mal»). Unen o separan, definen cultura, influyen en el cambio y la innovación.</li>
+                            <li><strong class="text-gray-300">Familiares:</strong> normas, valores y mandatos del sistema familiar (relación con autoridad, esfuerzo, pedir ayuda). Muchas no fueron elegidas pero impactan en el desempeño.</li>
+                            <li><strong class="text-gray-300">Propias:</strong> construidas desde experiencias personales (identidad profesional, «no soy bueno para…», «puedo aprender»). Configuran cómo nos relacionamos con desafíos y oportunidades.</li>
+                        </ul>
                         <p class="text-gray-400 text-sm mb-6">
-                            Análisis de creencias sociales ("acá siempre se hizo así") y propias (identidad profesional), y su impacto como filtros de percepción.
+                            En las organizaciones no actuamos sobre la realidad, sino sobre la interpretación que hacemos de ella. Identificar el origen de nuestras creencias es un paso fundamental para ampliar la conciencia y construir resultados más alineados.
                         </p>
                         <div class="glass-effect rounded-xl p-6 border border-crowdarGreen/30">
                             <h4 class="text-crowdarGreen font-bold mb-4 flex items-center gap-2">
@@ -825,9 +982,14 @@
                         <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down"></i></span>
                     </summary>
                     <div class="px-6 pb-6">
-                        <p class="text-gray-400 text-sm mb-6">
-                            Desglose del circuito Creencias → Emociones → Acciones → Resultados. Cómo la enseñanza, evidencia e impacto emocional construyen significado.
+                        <p class="text-gray-400 text-sm mb-3">
+                            Desglose del circuito Creencias → Emociones → Acciones → Resultados. Las personas no actuamos directamente sobre los hechos, sino sobre el significado que les otorgamos. Ese significado se construye a partir de tres fuentes de validación:
                         </p>
+                        <ul class="text-gray-400 text-sm list-disc list-inside mb-6 space-y-1">
+                            <li><strong class="text-gray-300">Enseñanza:</strong> lo aprendido por figuras de autoridad, modelos y cultura (cómo "debe" ser el trabajo, éxito, error, comunicación).</li>
+                            <li><strong class="text-gray-300">Evidencia:</strong> resultados repetidos que la mente usa como prueba de que "las cosas son así" (ej. "siempre que propongo algo nuevo, no funciona").</li>
+                            <li><strong class="text-gray-300">Impacto emocional:</strong> experiencias con carga emocional significativa que fijan creencias y condicionan cómo interpretamos situaciones similares después.</li>
+                        </ul>
                         <div class="glass-effect rounded-xl p-6 border border-crowdarGreen/30">
                             <h4 class="text-crowdarGreen font-bold mb-4 flex items-center gap-2">
                                 <i class="fas fa-project-diagram"></i> Constructor de Circuito Personal
@@ -1256,6 +1418,21 @@
                     });
                 })();
 
+                // Rebote en dropdowns de Dinámica de creencias (mismo efecto que Checkpoint)
+                (function() {
+                    function triggerBounceCreencia(el, bounceClass) {
+                        if (!el) return;
+                        el.classList.remove(bounceClass);
+                        el.offsetHeight;
+                        el.classList.add(bounceClass);
+                        var onEnd = function() { el.classList.remove(bounceClass); el.removeEventListener('animationend', onEnd); };
+                        el.addEventListener('animationend', onEnd);
+                    }
+                    document.querySelectorAll('.creencia-select').forEach(function(sel) {
+                        sel.addEventListener('change', function() { triggerBounceCreencia(sel, 'creencia-select--bounce'); });
+                    });
+                })();
+
                 // Timeline global   – scroll spy y selector de estilo del reloj (lineal/caricatura/hyperrealista)
                 (function() {
                     var timeline = document.getElementById('global-timeline');
@@ -1647,6 +1824,106 @@
             if (window.animateResultBox) window.animateResultBox(resultBox);
             resultBox.classList.add('animate-pulse');
             setTimeout(() => resultBox.classList.remove('animate-pulse'), 500);
+        }
+
+        // ——— Encuentro 2: Propósito organización (4 opciones + reflexión + preguntas disparadoras + leyenda)
+        const PROPOSITO_REFLEXIONES = {
+            1: {
+                titulo: 'Porque sí – Desorientación sin dirección',
+                texto: 'Esta respuesta suele emerger cuando la persona ha naturalizado su presencia en la organización. Está, pero no sabe para qué está. No hay propósito consciente, solo inercia. Desde el coaching ontológico, esto refleja una falta de declaración de sentido. No hay una narrativa elegida, sino una historia heredada o automática. Desde el modelo GROW (Whitmore), la persona no tiene claridad en el Goal. Si no hay meta declarada, el desempeño se vuelve reactivo. Desde la biología de la creencia (Lipton), cuando no cuestionamos nuestras creencias operamos en piloto automático. La ausencia de propósito consciente mantiene a la persona en un estado de supervivencia pasiva. En términos emocionales (Goleman), suele estar acompañado de apatía, desmotivación o resignación silenciosa. En equipos (Lencioni), esta postura debilita el compromiso.',
+                preguntas: ['¿Qué propósito explícito tengo hoy en esta organización?', 'Si no lo declaro yo, ¿quién lo está declarando por mí?', '¿Estoy eligiendo o simplemente permaneciendo?']
+            },
+            2: {
+                titulo: 'Porque hago como si estuviera – Mecanismos inconscientes',
+                texto: 'Aquí aparece una brecha entre presencia física y compromiso real. Se está, pero no se está. Desde el coaching ontológico, esto puede leerse como una incoherencia entre lo que declaro y lo que hago. Hay falta de alineación entre lenguaje, emoción y acción. En GROW, la dificultad suele estar en la fase Reality: evitar mirar la realidad con honestidad. La procrastinación muchas veces encubre miedo, inseguridad o creencias limitantes. Lipton explicaría que los comportamientos repetitivos no son casuales: responden a programas automáticos instalados. Si creo que "igual nada cambia" o "no soy suficiente", mi conducta tenderá a dispersarse. Desde la inteligencia emocional (Goleman), la autorregulación está comprometida. La distracción crónica suele estar vinculada a emociones evitadas. En términos de equipo (Lencioni), este patrón erosiona la responsabilidad compartida.',
+                preguntas: ['¿Qué emoción estoy evitando cuando procrastino?', '¿Qué creencia sostiene mi distracción?', '¿Qué resultado tendría si me hiciera 100% responsable de mi presencia?']
+            },
+            3: {
+                titulo: 'Para no dejar de tener trabajo – Excusas, justificaciones, culpas y victimismo',
+                texto: 'Aquí aparece la lógica de supervivencia. El trabajo es visto como amenaza o salvación, no como espacio de contribución. Desde el coaching ontológico, esta es una posición de víctima: "estoy porque no me queda otra". Se diluye la responsabilidad personal. En el modelo GROW, no hay conexión con un propósito inspirador (Goal), solo con evitar una pérdida. Las decisiones basadas en miedo reducen creatividad y compromiso. Lipton sostendría que cuando vivimos desde el miedo activamos estados biológicos de defensa. El cuerpo no está en expansión sino en protección. Desde Goleman, el miedo sostenido impacta en la motivación y en la calidad de las relaciones. En equipos (Lencioni), el miedo inhibe el conflicto saludable y reduce el compromiso auténtico.',
+                preguntas: ['¿Qué parte de esta situación sí depende de mí?', '¿Qué posibilidades se abren si dejo la queja?', '¿Estoy eligiendo quedarme o estoy justificando quedarme?']
+            },
+            4: {
+                titulo: 'Para ganar – Metas, objetivos, resultados',
+                texto: 'Esta respuesta introduce dirección. Hay intención y movimiento. Sin embargo, es clave explorar qué significa "ganar". ¿Ganar dinero? ¿Reconocimiento? ¿Aprendizaje? ¿Impacto? Desde el coaching ontológico, "ganar" requiere una declaración clara de metas y compromiso con la acción coherente. En GROW, aquí sí aparece el Goal como motor. Pero debe complementarse con: Reality (¿Dónde estoy hoy?), Options (¿Qué alternativas tengo?), Will (¿Qué haré concretamente?). Lipton recordaría que las creencias sobre el éxito determinan nuestros resultados. Goleman aportaría que el verdadero rendimiento sostenible requiere autoconciencia y regulación emocional. Lencioni subrayaría que en organizaciones maduras "ganar" es colectivo. El éxito individual aislado no construye equipo.',
+                preguntas: ['¿Qué significa ganar para mí?', '¿Mi definición de éxito incluye al equipo?', '¿Qué compromiso concreto asumo hoy?']
+            }
+        };
+        const LEYENDA_NIVELES = 'Estas cuatro respuestas no describen personas, sino niveles de conciencia organizacional: Inercia, Simulación, Supervivencia, Propósito y logro. La pregunta clave no es cuál soy, sino: ¿Desde qué lugar estoy operando hoy y desde cuál quiero elegir operar?';
+
+        function responderPropositoOrganizacion() {
+            const selected = document.querySelector('input[name="check_proposito_org"]:checked');
+            const resultDiv = document.getElementById('proposito_result');
+            if (!resultDiv) return;
+            if (!selected) {
+                resultDiv.classList.remove('hidden');
+                resultDiv.innerHTML = '<p class="text-amber-400 text-sm"><i class="fas fa-info-circle mr-2"></i>Elegí una opción antes de registrar.</p>';
+                return;
+            }
+            const num = parseInt(selected.value, 10);
+            const r = PROPOSITO_REFLEXIONES[num];
+            if (!r) {
+                resultDiv.classList.remove('hidden');
+                resultDiv.innerHTML = '<p class="text-gray-400 text-sm">Gracias por tu respuesta. Reflexioná sobre cómo esta elección se relaciona con tu propósito en la organización.</p>';
+                return;
+            }
+            var html = '<p class="text-crowdarGreen font-semibold text-sm mb-2"><i class="fas fa-bullseye mr-2"></i>' + r.titulo + '</p>';
+            html += '<p class="text-gray-300 text-sm mb-3">' + r.texto + '</p>';
+            html += '<p class="text-crowdarGreen font-semibold text-xs mb-2">Preguntas para profundizar:</p><ul class="list-disc list-inside text-gray-300 text-sm space-y-1 mb-4">';
+            r.preguntas.forEach(function(p) { html += '<li>' + p + '</li>'; });
+            html += '</ul>';
+            html += '<p class="text-gray-400 text-xs border-t border-slate-600 pt-3 italic">' + LEYENDA_NIVELES + '</p>';
+            resultDiv.innerHTML = html;
+            resultDiv.classList.remove('hidden');
+            if (window.animateResultBox) window.animateResultBox(resultDiv);
+            resultDiv.classList.add('animate-pulse');
+            setTimeout(function() { resultDiv.classList.remove('animate-pulse'); }, 500);
+        }
+
+        function reflexionarZonaConfort() {
+            var input = document.getElementById('zonaConfortInput');
+            var resultDiv = document.getElementById('zonaConfortResult');
+            if (!resultDiv) return;
+            var text = input ? input.value.trim() : '';
+            if (!text) {
+                resultDiv.classList.remove('hidden');
+                resultDiv.innerHTML = '<p class="text-amber-400 text-sm"><i class="fas fa-info-circle mr-2"></i>Escribí algo sobre tu zona de confort para recibir una reflexión.</p>';
+                return;
+            }
+            resultDiv.innerHTML = '<p class="mb-2"><strong class="text-crowdarGreen">Reflexión:</strong></p><p class="mb-2">Reconocer de qué está hecha tu zona de confort es el primer paso para elegir si querés ampliarla. Cambiar la manera de observar cambia el mundo interpretativo: lo que hoy sentís como "seguro" puede estar limitando posibilidades. Preguntate: ¿Qué me cuesta dejar o cuestionar? ¿Qué ganaría si me animara a salir un poco de esa zona?</p>';
+            resultDiv.classList.remove('hidden');
+            if (window.animateResultBox) window.animateResultBox(resultDiv);
+            resultDiv.classList.add('animate-pulse');
+            setTimeout(function() { resultDiv.classList.remove('animate-pulse'); }, 500);
+        }
+
+        function enviarDinamicaCreencias() {
+            var s1 = document.getElementById('creenciaSocial1');
+            var s2 = document.getElementById('creenciaSocial2');
+            var f1 = document.getElementById('creenciaFamiliar1');
+            var f2 = document.getElementById('creenciaFamiliar2');
+            var p1 = document.getElementById('creenciaPropia1');
+            var p2 = document.getElementById('creenciaPropia2');
+            var reform = document.getElementById('reformulacionCreencia');
+            var resultDiv = document.getElementById('dinamicaCreenciasResult');
+            if (!resultDiv) return;
+            var list = [];
+            if (s1 && s1.value) list.push('Social: ' + s1.value);
+            if (s2 && s2.value) list.push('Social: ' + s2.value);
+            if (f1 && f1.value) list.push('Familiar: ' + f1.value);
+            if (f2 && f2.value) list.push('Familiar: ' + f2.value);
+            if (p1 && p1.value) list.push('Propia: ' + p1.value);
+            if (p2 && p2.value) list.push('Propia: ' + p2.value);
+            var html = '<p class="text-crowdarGreen font-semibold mb-2">Creencias elegidas</p><ul class="list-disc list-inside mb-3">' + list.map(function(l) { return '<li>' + l + '</li>'; }).join('') + '</ul>';
+            if (reform && reform.value.trim()) {
+                html += '<p class="text-crowdarGreen font-semibold mb-1">Reformulación potenciadora</p><p class="mb-2">' + reform.value.trim() + '</p>';
+            }
+            html += '<p class="text-gray-400 text-xs">Reflexioná: ¿Cuál de estas creencias te impulsa y cuál te limita? Trabajar sobre la que te limita (reformulándola como en el ejemplo) amplía tu margen de acción.</p>';
+            resultDiv.innerHTML = html;
+            resultDiv.classList.remove('hidden');
+            if (window.animateResultBox) window.animateResultBox(resultDiv);
+            resultDiv.classList.add('animate-pulse');
+            setTimeout(function() { resultDiv.classList.remove('animate-pulse'); }, 500);
         }
 
         // Control del menú drawer móvil
